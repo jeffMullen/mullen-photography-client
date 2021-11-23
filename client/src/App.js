@@ -1,18 +1,18 @@
 import * as React from 'react';
 import CssBaseLine from '@mui/material/CssBaseline';
 import './scss/styles.scss';
-import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 
 function App() {
   return (
-    <React.Fragment>
+    <>
       <CssBaseLine />
       <div className="App">
         <header className="App-header">
-          <Navbar />
+          <Header />
         </header>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
