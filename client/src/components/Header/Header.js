@@ -39,18 +39,22 @@ function NavDrawer() {
         >
             <List>
                 {['About', 'Gallery'].map((text, index) => (
-                    <ListItem button key={text}>
+                    <ListItem
+                        button
+                        key={text}
+                    >
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
             </List>
-        </Box>
+        </Box >
     );
 
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
+                <AppBar position="fixed"
+                    sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                     <Toolbar>
                         <Drawer
                             anchor={anchor}
@@ -58,8 +62,9 @@ function NavDrawer() {
                             onClose={toggleDrawer(anchor, false)}>
 
                             <div
-                                className={styles.drawer}>
+                                className={styles.list}>
                                 {list(anchor)}
+                                {/* <Button color="inherit">Login</Button> */}
                             </div>
                         </Drawer>
                         <IconButton
@@ -75,7 +80,6 @@ function NavDrawer() {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Mullen Photography
                         </Typography>
-                        <Button color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
             </Box>
