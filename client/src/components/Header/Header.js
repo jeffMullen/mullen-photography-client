@@ -33,6 +33,9 @@ function NavDrawer() {
 
     const list = (anchor) => (
         <Box
+            sx={{
+                height: '100%'
+            }}
             role="presentation"
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
@@ -54,7 +57,10 @@ function NavDrawer() {
         <>
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="fixed"
-                    sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+                    sx={{
+                        zIndex: (theme) => theme.zIndex.drawer + 1,
+                        // boxShadow: 'none'
+                    }}>
                     <Toolbar>
                         <Drawer
                             anchor={anchor}
@@ -68,7 +74,11 @@ function NavDrawer() {
                             </div>
                         </Drawer>
                         <IconButton
-                            onClick={toggleDrawer(anchor, true)}
+                            onClick={drawerState.left === false ?
+                                toggleDrawer(anchor, true)
+                                :
+                                toggleDrawer(anchor, false)
+                            }
                             size="large"
                             edge="start"
                             color="inherit"

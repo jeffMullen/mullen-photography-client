@@ -8,7 +8,6 @@ import theme from './utils/Theme';
 
 function App() {
 
-  console.log(theme)
   return (
     <>
       <CssBaseLine />
