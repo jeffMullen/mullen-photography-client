@@ -1,0 +1,22 @@
+html {
+    min-height: 100vh;
+}
+
+body {
+    min-height: 100%;
+}
+
+.App {
+    margin: 15px;
+}
+
+main {
+    margin-top: 71px;
+    height: 100%;
+}
+
+@media  screen and (min-width: 600px) {
+    main {
+        margin-top: 79px;
+    }
+}
