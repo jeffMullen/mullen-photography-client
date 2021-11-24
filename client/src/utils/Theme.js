@@ -12,6 +12,13 @@ const theme = createTheme({
             light: '#143109',
             dark: '#143109',
         }
+    },
+    typography: {
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontWeightLight: 300,
+        fontWeightRegular: 400,
+        fontWeightMedium: 600,
+        fontWeightBold: 700,
     }
 })
 
