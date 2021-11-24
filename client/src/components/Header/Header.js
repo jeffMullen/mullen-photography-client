@@ -18,7 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 // Styles
 import styles from './Header.module.scss';
 
-function NavDrawer() {
+function NavDrawer(theme) {
     const [drawerState, setDrawerState] = useState({ left: false });
 
     const anchor = 'left';
@@ -45,8 +45,14 @@ function NavDrawer() {
                     <ListItem
                         button
                         key={text}
+                    // className={styles.listItemText}
                     >
-                        <ListItemText primary={text} />
+                        <ListItemText
+                            primary={text}
+                            sx={{
+                                fontWeight: (theme) => theme.typography.fontWeightBold
+                            }}
+                        />
                     </ListItem>
                 ))}
             </List>

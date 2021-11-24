@@ -1,10 +1,26 @@
-
 .list {
+    position: relative;
     margin-top: 56px;
     width: 165px;
     height: 100%;
     padding-left: 15px;
+    &::before {
+        position: absolute;
+        content: '';
+        background-image: url('../../layout-images/drawer-small.jpg');
+        background-size: cover;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.5;
+        // filter: blur(1px);
+    }
+    // .listItemText {
+    //     font-weight: bold;
+    // }
 }
+
 
 @media screen and ( min-width: 600px ) {
     .list {
