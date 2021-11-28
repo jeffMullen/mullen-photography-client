@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
 // AppBar imports
@@ -41,18 +43,41 @@ function NavDrawer(theme) {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
+                <ListItem
+                    button
+                    key={`Home`}
+                >
+                    <Link
+                        href={`/`}
+                        color="inherit"
+                        underline="none"
+                    >
+                        <ListItemText
+                            primary={`Home`}
+                            sx={{
+                                fontWeight: (theme) => theme.typography.fontWeightBold
+                            }}
+                        />
+                    </Link>
+                </ListItem>
                 {['About', 'Gallery'].map((text, index) => (
                     <ListItem
                         button
                         key={text}
                     // className={styles.listItemText}
                     >
-                        <ListItemText
-                            primary={text}
-                            sx={{
-                                fontWeight: (theme) => theme.typography.fontWeightBold
-                            }}
-                        />
+                        <Link
+                            href={`/${text}`}
+                            color="inherit"
+                            underline="none"
+                        >
+                            <ListItemText
+                                primary={text}
+                                sx={{
+                                    fontWeight: (theme) => theme.typography.fontWeightBold
+                                }}
+                            />
+                        </Link>
                     </ListItem>
                 ))}
             </List>
