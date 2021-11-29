@@ -2,12 +2,9 @@ import React from 'react';
 import Box from '@mui/material/Box'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import Grid from '@mui/material/Grid';
 import styles from './ImageGrid.module.scss';
 
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import { green } from '@mui/material/colors';
+
 
 function ImageGrid() {
 
@@ -62,16 +59,21 @@ function ImageGrid() {
         },
     ];
 
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+
     return (
         <Box>
-            <ImageList variant="masonry" cols={3} gap={8}>
+            <ImageList variant="masonry" cols={vw < 600 ? (vw < 500 ? 1 : 2) : 3} gap={8}>
                 {imageData.map((item) => (
                     <ImageListItem
                         key={item.img}
-                        sm={6}
-                        lg={2}
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}
                     >
                         <img
+                            className={styles.img}
                             src={`${item.img}?w=500&h=500&fit=crop&auto=format`}
                             srcSet={`${item.img}?w=500&h=500&fit=crop&auto=format&dpr=2 2x`}
                             alt={item.title}
