@@ -1,6 +1,8 @@
 import React from 'react';
 
+import Categories from './Categories/Categories';
 import ImageGrid from './ImageGrid/ImageGrid';
+
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -14,8 +16,8 @@ function Gallery() {
             <Box
                 sx={{
                     marginTop: {
-                        xs: '100px',
-                        lg: '150px'
+                        xs: '6rem',
+                        lg: '9rem'
                     }
                 }}
             >
@@ -25,14 +27,22 @@ function Gallery() {
                     sx={{
                         textAlign: 'center',
                         marginBottom: {
-                            xs: '50px',
-                            lg: '100px'
-                        }
+                            xs: '1.5rem',
+                            md: '3rem'
+                        },
+                        fontVariant: 'small-caps'
                     }}>
                     Gallery
                     <span className={styles.underline}></span>
                 </Typography>
-                <Container>
+                <Container
+                sx={{
+                    marginBottom: {
+                       md: '5rem'
+                    }
+                }}
+                >
+                    <Categories />
                 </Container>
                 <Container>
                     <ImageGrid />

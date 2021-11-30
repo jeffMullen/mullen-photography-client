@@ -54,7 +54,8 @@ function NavDrawer(theme) {
                         <ListItemText
                             primary={`Home`}
                             sx={{
-                                fontWeight: (theme) => theme.typography.fontWeightBold
+                                fontWeight: (theme) => theme.typography.fontWeightBold,
+                                fontVariant: 'small-caps'
                             }}
                         />
                     </Link>
@@ -73,7 +74,8 @@ function NavDrawer(theme) {
                             <ListItemText
                                 primary={text}
                                 sx={{
-                                    fontWeight: (theme) => theme.typography.fontWeightBold
+                                    fontWeight: (theme) => theme.typography.fontWeightBold,
+                                    fontVariant: 'small-caps'
                                 }}
                             />
                         </Link>
@@ -119,7 +121,10 @@ function NavDrawer(theme) {
                         >
                             <MenuOpenIcon />
                         </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Typography variant="h6" component="div" sx={{
+                            flexGrow: 1,
+                            fontVariant: 'small-caps'
+                        }}>
                             Mullen Photography
                         </Typography>
                     </Toolbar>
