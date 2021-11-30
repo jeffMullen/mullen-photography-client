@@ -3,6 +3,9 @@ import Box from '@mui/material/Box'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import styles from './ImageGrid.module.scss';
+import Paper from '@mui/material/Paper'
+
+import portland from './portland.jpeg';
 
 
 
@@ -23,8 +26,8 @@ function ImageGrid() {
 
     const imageData = [
         {
-            img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-            title: 'Breakfast',
+            img: portland,
+            title: 'Portland',
         },
         {
             img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
@@ -77,30 +80,31 @@ function ImageGrid() {
         setOrientation(window.orientation)
     })
 
-
     return (
         <Box>
-            <ImageList variant="masonry"
-                cols={columnCount}
-                gap={8}>
-                {imageData.map((item) => (
-                    <ImageListItem
-                        key={item.img}
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center'
-                        }}
-                    >
-                        <img
-                            className={styles.img}
-                            src={`${item.img}?w=500&h=500&fit=crop&auto=format`}
-                            srcSet={`${item.img}?w=500&h=500&fit=crop&auto=format&dpr=2 2x`}
-                            alt={item.title}
-                            loading="lazy"
-                        />
-                    </ImageListItem>
-                ))}
-            </ImageList>
+            <Paper>
+                <ImageList
+                    cols={columnCount}
+                    gap={8}>
+                    {imageData.map((item) => (
+                        <ImageListItem
+                            key={item.img}
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            <img
+                                className={styles.img}
+                                src={`${item.img}?w=500&h=500&fit=crop&auto=format`}
+                                srcSet={`${item.img}?w=500&h=500&fit=crop&auto=format&dpr=2 2x`}
+                                alt={item.title}
+                                loading="lazy"
+                            />
+                        </ImageListItem>
+                    ))}
+                </ImageList>
+            </Paper>
         </Box >
     );
 };
