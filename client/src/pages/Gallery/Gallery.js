@@ -21,6 +21,7 @@ function Gallery() {
                     }
                 }}
             >
+                {/* Page Heading */}
                 <Typography
                     variant='h4'
                     component='h2'
@@ -33,8 +34,9 @@ function Gallery() {
                         fontVariant: 'small-caps'
                     }}>
                     Gallery
-                    <span className={styles.underline}></span>
                 </Typography>
+
+                {/* Category Links */}
                 <Container
                 sx={{
                     marginBottom: {
@@ -44,6 +46,8 @@ function Gallery() {
                 >
                     <Categories />
                 </Container>
+                
+                    {/* Image List */}
                 <Container>
                     <ImageGrid />
                 </Container>
