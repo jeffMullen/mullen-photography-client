@@ -1,4 +1,4 @@
-const db = require('./connection');
+const db = require('../config/connection');
 const { User } = require('../models');
 
 db.once('open', async () => {
@@ -8,6 +8,13 @@ db.once('open', async () => {
         username: 'Jeff Mullen',
         email: 'jeff@jeff.com',
         password: 'password12345',
+        photos: [
+            {
+                fileName: 'portland.jpeg',
+                title: 'Portland',
+                description: "Al's Den in downtown Portland"
+            }
+        ]
     });
 
     console.log('users seeded');

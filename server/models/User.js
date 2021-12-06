@@ -1,9 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// import schema from Recipe.js
-const Recipe = require('./Recipe');
-
 const userSchema = new Schema(
   {
     username: {
@@ -21,8 +18,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set saved_recipes to be an array of data that adheres to the recipeSchema
-    saved_recipes: {
+    // set photos to be an array of objects
+    photos: {
       type: [Object]
     },
   },

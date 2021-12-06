@@ -5,11 +5,11 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
-        saved_recipes: [Recipe]
     }
     
     type Query {
         me: User
+        users: [User]
     }
     
     type Auth {
