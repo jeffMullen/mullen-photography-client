@@ -1,8 +1,9 @@
 const db = require('../config/connection');
-const { User } = require('../models');
+const { User, Photo } = require('../models');
 
 db.once('open', async () => {
     await User.deleteMany();
+    await Photo.deleteMany();
 
     await User.create({
         username: 'Jeff Mullen',
@@ -17,7 +18,14 @@ db.once('open', async () => {
         ]
     });
 
-    console.log('users seeded');
+    await Photo.create({
+        author: 'Jeff Mullen',
+        fileName: 'portland.jpeg',
+        title: 'Portland',
+        description: "Al's Den in downtown Portland"
+    })
+
+    console.log('db seeded');
 
     process.exit();
 });
