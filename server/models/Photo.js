@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const photoSchema = new Schema(
     {
-        author: {
+        photographer: {
             type: String,
             required: true,
         },

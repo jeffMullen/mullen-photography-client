@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Photo } = require('../models');
 const { signToken } = require('../utils/auth');
 // const mongoose = require('mongoose');
 //  const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -13,7 +13,6 @@ const resolvers = {
       } catch (e) {
         throw new AuthenticationError(e)
       }
-
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -22,6 +21,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    photos: async () => {
+      try {
+        return await Photo.find();
+      } catch (e) {
+        throw new AuthenticationError(e);
+      }
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {

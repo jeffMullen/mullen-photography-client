@@ -6,10 +6,19 @@ const typeDefs = gql`
         username: String
         email: String
     }
+
+    type Photo {
+        _id: ID
+        photographer: String
+        fileName: String
+        title: String
+        description: String
+    }
     
     type Query {
         me: User
         users: [User]
+        photos: [Photo]
     }
     
     type Auth {

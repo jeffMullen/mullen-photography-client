@@ -19,7 +19,7 @@ db.once('open', async () => {
     });
 
     await Photo.create({
-        author: 'Jeff Mullen',
+        photographer: 'Jeff Mullen',
         fileName: 'portland.jpeg',
         title: 'Portland',
         description: "Al's Den in downtown Portland"
