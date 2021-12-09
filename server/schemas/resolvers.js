@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Photo } = require('../models');
+const { User, Photo, MullenPhoto } = require('../models');
 const { signToken } = require('../utils/auth');
 // const mongoose = require('mongoose');
 //  const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -10,8 +10,8 @@ const resolvers = {
       try {
         return await User.find();
 
-      } catch (e) {
-        throw new AuthenticationError(e)
+      } catch (err) {
+        throw new AuthenticationError(err)
       }
     },
     me: async (parent, args, context) => {
@@ -24,8 +24,15 @@ const resolvers = {
     photos: async () => {
       try {
         return await Photo.find();
-      } catch (e) {
-        throw new AuthenticationError(e);
+      } catch (err) {
+        throw new AuthenticationError(err);
+      }
+    },
+    mullen: async () => {
+      try {
+        return await MullenPhoto.find();
+      } catch (err) {
+        throw new AuthenticationError(err)
       }
     }
   },

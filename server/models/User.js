@@ -31,6 +31,12 @@ const userSchema = new Schema(
   }
 );
 
+// Virtual property of photos tied to user by username
+// userSchema.virtual('photos').get(async function () {
+
+//   return await Photo.find({ photographer: this.username })
+// })
+
 // hash user password
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {

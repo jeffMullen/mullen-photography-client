@@ -17,10 +17,17 @@ const photoSchema = new Schema(
         },
         description: {
             type: String,
+        },
+        category: {
+            type: String,
         }
     }
 );
 
 const Photo = model('Photo', photoSchema);
+const MullenPhoto = model('MullenPhoto', photoSchema)
 
-module.exports = Photo;
+module.exports = {
+    Photo,
+    MullenPhoto
+};

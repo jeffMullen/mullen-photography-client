@@ -5,6 +5,7 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        photos: [Photo]
     }
 
     type Photo {
@@ -13,12 +14,23 @@ const typeDefs = gql`
         fileName: String
         title: String
         description: String
+        category: String
+    }
+
+    type MullenPhoto {
+        _id: ID
+        photographer: String
+        fileName: String
+        title: String
+        description: String
+        category: String
     }
     
     type Query {
         me: User
         users: [User]
         photos: [Photo]
+        mullen: [MullenPhoto]
     }
     
     type Auth {
