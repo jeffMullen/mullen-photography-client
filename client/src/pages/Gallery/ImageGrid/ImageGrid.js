@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box'
+import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import styles from './ImageGrid.module.scss';
-import Paper from '@mui/material/Paper'
+import Paper from '@mui/material/Paper';
 import imageData from '../../../mullen-photos/photographs';
 
-
+import { useHistory } from 'react-router-dom';
 
 function ImageGrid() {
 
     const [orientation, setOrientation] = useState(window.orientation);
-    const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0))
+    const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
 
     useEffect(() => {
@@ -19,14 +19,14 @@ function ImageGrid() {
             setColumnCount(1);
         } else if (orientation === 90) {
             vw < 1000 ?
-                setColumnCount(2) : setColumnCount(3)
+                setColumnCount(2) : setColumnCount(3);
         }
-    }, [orientation, vw])
+    }, [orientation, vw]);
 
     window.addEventListener('orientationchange', (e) => {
-        setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0))
-        setOrientation(window.orientation)
-    })
+        setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
+        setOrientation(window.orientation);
+    });
 
     return (
         <Box>
@@ -43,6 +43,7 @@ function ImageGrid() {
                             }}
                         >
                             <img
+                                onClick={{}}
                                 className={styles.img}
                                 src={`${item.img}?w=500&h=500&fit=crop&auto=format`}
                                 srcSet={`${item.img}?w=500&h=500&fit=crop&auto=format&dpr=2 2x`}
