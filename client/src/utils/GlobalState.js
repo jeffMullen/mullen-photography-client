@@ -2,12 +2,11 @@ import React, { createContext, useContext } from "react";
 import { usePhotoReducer } from './reducers'
 
 const StoreContext = createContext();
-console.log(StoreContext);
 const { Provider } = StoreContext;
 
 const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = usePhotoReducer({
-        photo: [],
+        photo: {},
         currentCategory: '',
     });
 

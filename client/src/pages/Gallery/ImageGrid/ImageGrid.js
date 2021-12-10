@@ -4,10 +4,13 @@ import ImageList from '@mui/material/ImageList';
 import Paper from '@mui/material/Paper';
 import imageData from '../../../mullen-photos/photographs';
 import SinglePhoto from './SinglePhoto/SinglePhoto';
+import { CHANGE_SINGLE_PHOTO } from '../../../utils/actions';
+import { useStoreContext } from '../../../utils/GlobalState';
 
 import { useHistory } from 'react-router-dom';
 
 function ImageGrid() {
+    const [state, dispatch] = useStoreContext();
 
     const [orientation, setOrientation] = useState(window.orientation);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
@@ -29,13 +32,18 @@ function ImageGrid() {
 
     let history = useHistory();
 
-    const routeToPhoto = (e) => {
+    const routeToPhoto = async (e) => {
         const data = JSON.parse(e.currentTarget.dataset.photo);
         const title = data.title;
         console.log(data)
         console.log(title)
 
-        history.push(`/Photograph/${title}`);
+        await dispatch({
+            type: CHANGE_SINGLE_PHOTO,
+            photo: data,
+        })
+
+        history.push(`/Photograph/:${title}`);
 
     }
 
