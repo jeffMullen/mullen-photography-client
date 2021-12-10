@@ -7,7 +7,7 @@ const { Provider } = StoreContext;
 const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = usePhotoReducer({
         photo: {},
-        currentCategory: '',
+        currentCategory: 'All',
     });
 
     return <Provider value={[state, dispatch]} {...props} />;
