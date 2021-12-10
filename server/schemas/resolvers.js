@@ -1,6 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Photo, MullenPhoto } = require('../models');
 const { signToken } = require('../utils/auth');
+const multer = require('multer');
+const path = require('path');
 // const mongoose = require('mongoose');
 //  const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -23,6 +25,7 @@ const resolvers = {
     },
     photos: async () => {
       try {
+
         return await Photo.find();
       } catch (err) {
         throw new AuthenticationError(err);
@@ -30,7 +33,27 @@ const resolvers = {
     },
     mullen: async () => {
       try {
-        return await MullenPhoto.find();
+        const examplePhoto = new Blob(path.join(__dirname, '../images/portland.jpeg'));
+        console.log('examplePhoto', examplePhoto);
+
+
+
+
+        const photoArray = await MullenPhoto.find();
+        // console.log(photoArray);
+        const fileNameArray = [];
+        photoArray.forEach(photo => {
+          let newPhoto = photo.fileName
+          fileNameArray.push(path.join(__dirname, `../images/${newPhoto}`));
+        })
+
+        console.log('file array', fileNameArray);
+        const fileName = photoArray[0].fileName;
+        // console.log(fileName);
+
+
+
+        return photoArray;
       } catch (err) {
         throw new AuthenticationError(err)
       }
