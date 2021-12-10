@@ -4,7 +4,7 @@ function Photograph() {
 
     return (
         <>
-        
+            Single Photograph
         </>
     )
 }

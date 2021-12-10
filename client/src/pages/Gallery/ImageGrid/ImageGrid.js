@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import styles from './ImageGrid.module.scss';
 import Paper from '@mui/material/Paper';
 import imageData from '../../../mullen-photos/photographs';
+import SinglePhoto from './SinglePhoto/SinglePhoto';
 
 import { useHistory } from 'react-router-dom';
 
@@ -28,30 +27,32 @@ function ImageGrid() {
         setOrientation(window.orientation);
     });
 
+    let history = useHistory();
+
+    const routeToPhoto = (e) => {
+        const data = JSON.parse(e.currentTarget.dataset.photo);
+        const title = data.title;
+        console.log(data)
+        console.log(title)
+
+        history.push(`/Photograph/${title}`);
+
+    }
+
     return (
         <Box>
             <Paper>
                 <ImageList
                     cols={columnCount}
                     gap={8}>
-                    {imageData.map((item) => (
-                        <ImageListItem
+                    {imageData.map((item) => {
+                        return <SinglePhoto
                             key={item.img}
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center'
-                            }}
-                        >
-                            <img
-                                onClick={{}}
-                                className={styles.img}
-                                src={`${item.img}?w=500&h=500&fit=crop&auto=format`}
-                                srcSet={`${item.img}?w=500&h=500&fit=crop&auto=format&dpr=2 2x`}
-                                alt={item.title}
-                                loading="lazy"
-                            />
-                        </ImageListItem>
-                    ))}
+                            item={item}
+                            routeToPhoto={routeToPhoto}
+                        />
+                    }
+                    )}
                 </ImageList>
             </Paper>
         </Box >

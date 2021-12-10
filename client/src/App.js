@@ -27,7 +27,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/About" component={About} />
                 <Route exact path="/Gallery" component={Gallery} />
-                <Route exact path="/Photograph/:title" component={Photograph} />
+                <Route exact path="/Photograph/title" component={Photograph} />
               </Switch>
             </main>
           </div>
