@@ -51,8 +51,7 @@ function ImageGrid() {
                             item={item}
                             routeToPhoto={routeToPhoto}
                         />
-                    }
-                    )}
+                    })}
                 </ImageList>
             </Paper>
         </Box >

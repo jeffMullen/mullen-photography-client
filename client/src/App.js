@@ -9,6 +9,7 @@ import Photograph from './pages/Photograph/Photograph';
 import Header from './components/Header/Header';
 
 import { ThemeProvider } from '@mui/material/styles';
+import { StoreProvider } from './utils/GlobalState';
 import theme from './utils/Theme';
 
 function App() {
@@ -16,23 +17,25 @@ function App() {
   return (
     <>
       <CssBaseLine />
-      <ThemeProvider theme={theme}>
-        <Router>
-          <div className="App">
-            <header className="App-header">
-              <Header />
-            </header>
-            <main>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/About" component={About} />
-                <Route exact path="/Gallery" component={Gallery} />
-                <Route exact path="/Photograph/title" component={Photograph} />
-              </Switch>
-            </main>
-          </div>
-        </Router>
-      </ThemeProvider>
+      <StoreProvider>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <div className="App">
+              <header className="App-header">
+                <Header />
+              </header>
+              <main>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/About" component={About} />
+                  <Route exact path="/Gallery" component={Gallery} />
+                  <Route exact path="/Photograph/title" component={Photograph} />
+                </Switch>
+              </main>
+            </div>
+          </Router>
+        </ThemeProvider>
+      </StoreProvider>
     </>
   );
 }
