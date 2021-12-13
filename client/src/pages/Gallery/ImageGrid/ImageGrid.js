@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import Paper from '@mui/material/Paper';
+import Modal from '@mui/material/Modal';
 import imageData from '../../../mullen-photos/photographs';
 import SinglePhoto from './SinglePhoto/SinglePhoto';
 import { CHANGE_SINGLE_PHOTO } from '../../../utils/actions';
 import { useStoreContext } from '../../../utils/GlobalState';
+import styles from './ImageGrid.module.scss';
 
 import { useHistory } from 'react-router-dom';
 
@@ -21,6 +23,12 @@ function ImageGrid() {
     const [orientation, setOrientation] = useState(window.orientation);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
+
+    // MODAL STATE
+    const [open, setOpen] = React.useState(false);
+    // MODAL FUNCTIONS
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
 
     // Check which orientation a mobile phone is in and display accordingly
@@ -39,34 +47,31 @@ function ImageGrid() {
         setOrientation(window.orientation);
     });
 
-    let history = useHistory();
+    // let history = useHistory();
 
-    // re-route to full sized image display with full photo data on Photograph page
+    // Re-route to full sized image display with full photo data on Photograph page
     const routeToPhoto = async (e) => {
         const data = JSON.parse(e.currentTarget.dataset.photo);
         const title = data.title;
         console.log(data)
         console.log(title)
 
-        await dispatch({
-            type: CHANGE_SINGLE_PHOTO,
-            photo: data,
-        });
+        // Set photo details to local storage
+        window.localStorage.setItem('photo', JSON.stringify(data));
 
-        history.push(`/Photograph/:${title}`);
+        // history.push(`/Photograph/:${title}`);
+
+        handleOpen();
     };
 
-    // Set photo state to local storage when photo state is changed
+    // Set single photo in state using local storage data
     useEffect(() => {
-        window.localStorage.setItem('photo', JSON.stringify(photo));
-    }, [photo]);
+        dispatch({
+            type: CHANGE_SINGLE_PHOTO,
+            photo: JSON.parse(window.localStorage.getItem('photo')),
+        });
+    }, [dispatch]);
 
-    // useEffect(() => {
-    //     dispatch({
-    //         type: CHANGE_SINGLE_PHOTO,
-    //         photo: JSON.parse(window.localStorage.getItem('photo')),
-    //     })
-    // }, []);
 
     return (
         <Box>
@@ -79,10 +84,47 @@ function ImageGrid() {
                             key={item.img}
                             item={item}
                             routeToPhoto={routeToPhoto}
+                            handleOpen={handleOpen}
                         />
                     })}
                 </ImageList>
             </Paper>
+
+            {/* Modal displaying image appears when images are clicked */}
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        // top: '50%',
+                        // left: '50%',
+                        // transform: 'translate(-50%, -50%)',
+                        height: '95%',
+                        // width: '95%',
+                        bgcolor: 'background.paper',
+                        // border: '1px solid black',
+                        outline: 'none',
+                        p: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+
+                    }}
+                >
+                    <img src={photo.img}
+                        className={styles.dimensions}
+                        alt={`Title: ${photo.title}`}
+                    ></img>
+                </Box>
+            </Modal>
         </Box >
     );
 };

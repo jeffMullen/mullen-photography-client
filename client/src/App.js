@@ -9,10 +9,11 @@ import Photograph from './pages/Photograph/Photograph';
 import Header from './components/Header/Header';
 
 import { ThemeProvider } from '@mui/material/styles';
-import { StoreProvider } from './utils/GlobalState';
+import { StoreProvider, useStoreContext } from './utils/GlobalState';
 import theme from './utils/Theme';
 
 function App() {
+
 
   return (
     <>

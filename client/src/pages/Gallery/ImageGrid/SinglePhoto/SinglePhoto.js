@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageListItem from '@mui/material/ImageListItem';
 
-function SinglePhoto({ item, routeToPhoto }) {
+function SinglePhoto({ item, routeToPhoto, handleOpen }) {
 
     return (
         <ImageListItem
