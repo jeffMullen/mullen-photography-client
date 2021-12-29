@@ -48,9 +48,6 @@ function ImageGrid() {
     // Send full sized image to Modal Display when image is clicked
     const routeToPhoto = async (e) => {
         const data = JSON.parse(e.currentTarget.dataset.photo);
-        const title = data.title;
-        console.log(data)
-        console.log(title)
 
         // Set photo details to local storage
         window.localStorage.setItem('photo', JSON.stringify(data));

@@ -1,8 +1,29 @@
 import React from 'react';
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography';
+import { useStoreContext } from '../../../utils/GlobalState';
+import { ADD_CATEGORY_FILTER } from '../../../utils/actions';
+
 
 function Categories() {
+    const [state, dispatch] = useStoreContext();
+
+    const { currentCategory } = state;
+    console.log('currentCategory', currentCategory)
+
+    // Set the photo category filter
+    const setCategoryFilter = (e) => {
+        const data = e.target.textContent;
+
+        // Set category in local storage
+        window.localStorage.setItem('currentCategory', JSON.stringify(data));
+
+        dispatch({
+            type: ADD_CATEGORY_FILTER,
+            currentCategory: JSON.parse(window.localStorage.getItem('currentCategory')),
+        });
+
+    }
 
     return (
         <>
@@ -17,11 +38,13 @@ function Categories() {
             >
                 {['All', 'Landscape', 'Urban', 'Abstract'].map(category =>
                     <Typography key={category}
-                    variant='overline'
-                    component='h3'
-                    sx={{
-                        fontSize: '1rem'
-                    }}
+                        variant='overline'
+                        component='h3'
+                        sx={{
+                            fontSize: '1rem'
+                        }}
+                        onClick={(e) =>
+                            setCategoryFilter(e)}
                     >{category}</Typography>
                 )}
             </Box>
