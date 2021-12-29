@@ -26,6 +26,8 @@ function ImageGrid() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    // MODAL photo text info state - displayed or hidden
+    const [isShown, setIsShown] = useState(false);
 
     // Check which orientation a mobile phone is in and display accordingly
     useEffect(() => {
@@ -57,9 +59,17 @@ function ImageGrid() {
             type: CHANGE_SINGLE_PHOTO,
             photo: JSON.parse(window.localStorage.getItem('photo')),
         });
-        
+
         handleOpen();
     };
+
+    let visibility;
+
+    if (isShown) {
+        visibility = styles.information;
+    } else {
+        visibility = styles.hidden;
+    }
 
     return (
         <Box>
@@ -98,7 +108,7 @@ function ImageGrid() {
                         // transform: 'translate(-50%, -50%)',
                         height: '95%',
                         // width: '95%',
-                        bgcolor: 'background.paper',
+                        bgcolor: 'rgba(0, 0, 0, 0.5)',
                         // border: '1px solid black',
                         outline: 'none',
                         p: 2,
@@ -109,29 +119,37 @@ function ImageGrid() {
                     <img src={photo.img}
                         className={styles.dimensions}
                         alt={`Title: ${photo.title}`}
+                        onMouseEnter={() => setIsShown(true)}
+                        onMouseLeave={() => setIsShown(false)}
                     ></img>
                     <div
-                        id='information'
-                        className={styles.information}
+                        className={styles.dimensions}
                     >
-                        <Typography
-                            variant='h5'
-                            component='h3'
+                        <div
+                            id='information'
+                            className={visibility}
+                            onMouseEnter={() => setIsShown(true)}
                         >
-                            {photo.title}
-                        </Typography>
-                        <Typography
-                            variant='p'
-                            component='p'
-                        >
-                            {photo.photographer}
-                        </Typography>
-                        <Typography
-                            variant='p'
-                            component='p'
-                        >
-                            {photo.description}
-                        </Typography>
+                            <Typography
+                                variant='h5'
+                                component='h3'
+                            >
+                                {photo.title}
+                            </Typography>
+                            <Typography
+                                variant='p'
+                                component='p'
+                            >
+                                {photo.photographer}
+                            </Typography>
+                            <Typography
+                                variant='p'
+                                component='p'
+                            >
+                                {photo.description}
+                            </Typography>
+                        </div>
+
                     </div>
                 </Box>
             </Modal>

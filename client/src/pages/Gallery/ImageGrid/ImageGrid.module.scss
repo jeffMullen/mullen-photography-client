@@ -4,8 +4,8 @@
     object-fit: contain;
 }
 
-.information {
-    // display: none;
+.information,
+.hidden {
     position: absolute;
     margin-top: 25px;
     left: 50%;
@@ -14,4 +14,17 @@
     align-self: start;
     background: rgba(0, 0, 0, .5);
     padding: .5rem;
+}
+
+.information {
+    // display: block;
+    opacity: 1;
+    transition-duration: .7s;
+    transition-property: opacity;
+}
+
+.hidden {
+    opacity: 0;
+    transition-duration: .7s;
+    transition-property: opacity;
 }
