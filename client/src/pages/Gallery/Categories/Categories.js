@@ -22,7 +22,6 @@ function Categories() {
             type: ADD_CATEGORY_FILTER,
             currentCategory: JSON.parse(window.localStorage.getItem('currentCategory')),
         });
-
     }
 
     return (

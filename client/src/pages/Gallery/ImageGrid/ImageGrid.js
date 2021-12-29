@@ -14,7 +14,9 @@ import styles from './ImageGrid.module.scss';
 function ImageGrid() {
     const [state, dispatch] = useStoreContext();
 
+    const { currentCategory } = state;
     const { photo } = state;
+
 
     const [orientation, setOrientation] = useState(window.orientation);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
@@ -39,6 +41,18 @@ function ImageGrid() {
         }
     }, [orientation, vw]);
 
+    let filteredImages = [];
+
+    if (currentCategory === 'All') {
+        filteredImages = imageData;
+    } else {
+        filteredImages = imageData.filter(image =>
+            image.category === currentCategory
+        );
+    }
+
+    console.log("filtered images", filteredImages)
+
     // Listen for a change in mobile orientation
     window.addEventListener('orientationchange', (e) => {
         setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
@@ -60,6 +74,7 @@ function ImageGrid() {
         handleOpen();
     };
 
+    // Setting the visibility of the photo info in modal - based on isShown local state
     let visibility;
 
     if (isShown) {
@@ -74,7 +89,7 @@ function ImageGrid() {
                 <ImageList
                     cols={columnCount}
                     gap={8}>
-                    {imageData.map((item) => {
+                    {filteredImages.map((item) => {
                         return <SinglePhoto
                             key={item.img}
                             item={item}
