@@ -2,5 +2,16 @@
     height: 100%;
     width: 100%;
     object-fit: contain;
-    // position: absolute;
+}
+
+.information {
+    // display: none;
+    position: absolute;
+    margin-top: 25px;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    align-self: start;
+    background: rgba(0, 0, 0, .5);
+    padding: .5rem;
 }

@@ -6,7 +6,7 @@ const { Provider } = StoreContext;
 
 const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = usePhotoReducer({
-        photo: {},
+        photo: JSON.parse(window.localStorage.getItem('photo')),
         currentCategory: 'All',
     });
 

@@ -3,22 +3,18 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import Paper from '@mui/material/Paper';
 import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+
 import imageData from '../../../mullen-photos/photographs';
 import SinglePhoto from './SinglePhoto/SinglePhoto';
 import { CHANGE_SINGLE_PHOTO } from '../../../utils/actions';
 import { useStoreContext } from '../../../utils/GlobalState';
 import styles from './ImageGrid.module.scss';
 
-import { useHistory } from 'react-router-dom';
-
 function ImageGrid() {
     const [state, dispatch] = useStoreContext();
 
-    console.log(state);
-
     const { photo } = state;
-
-    console.log(photo)
 
     const [orientation, setOrientation] = useState(window.orientation);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
@@ -47,9 +43,7 @@ function ImageGrid() {
         setOrientation(window.orientation);
     });
 
-    // let history = useHistory();
-
-    // Re-route to full sized image display with full photo data on Photograph page
+    // Send full sized image to Modal Display when image is clicked
     const routeToPhoto = async (e) => {
         const data = JSON.parse(e.currentTarget.dataset.photo);
         const title = data.title;
@@ -59,19 +53,13 @@ function ImageGrid() {
         // Set photo details to local storage
         window.localStorage.setItem('photo', JSON.stringify(data));
 
-        // history.push(`/Photograph/:${title}`);
-
-        handleOpen();
-    };
-
-    // Set single photo in state using local storage data
-    useEffect(() => {
         dispatch({
             type: CHANGE_SINGLE_PHOTO,
             photo: JSON.parse(window.localStorage.getItem('photo')),
         });
-    }, [dispatch]);
-
+        
+        handleOpen();
+    };
 
     return (
         <Box>
@@ -116,13 +104,35 @@ function ImageGrid() {
                         p: 2,
                         display: 'flex',
                         alignItems: 'center',
-
                     }}
                 >
                     <img src={photo.img}
                         className={styles.dimensions}
                         alt={`Title: ${photo.title}`}
                     ></img>
+                    <div
+                        id='information'
+                        className={styles.information}
+                    >
+                        <Typography
+                            variant='h5'
+                            component='h3'
+                        >
+                            {photo.title}
+                        </Typography>
+                        <Typography
+                            variant='p'
+                            component='p'
+                        >
+                            {photo.photographer}
+                        </Typography>
+                        <Typography
+                            variant='p'
+                            component='p'
+                        >
+                            {photo.description}
+                        </Typography>
+                    </div>
                 </Box>
             </Modal>
         </Box >
