@@ -8,18 +8,17 @@
 .hidden {
     position: absolute;
     margin-top: 25px;
-    left: 50%;
-    transform: translate(-50%);
+    left: 5%;
+    // transform: translate(-50%);
     color: white;
     align-self: start;
-    background: rgba(0, 0, 0, .5);
-    padding: .5rem;
+    background: rgba(0, 0, 0, .9);
+    padding: 1.5rem;
 }
 
 .information {
-    // display: block;
     opacity: 1;
-    transition-duration: .7s;
+    transition-duration: .3s;
     transition-property: opacity;
 }
 

@@ -102,14 +102,9 @@ function ImageGrid() {
             >
                 <Box
                     sx={{
-                        position: 'absolute',
-                        // top: '50%',
-                        // left: '50%',
-                        // transform: 'translate(-50%, -50%)',
+                        position: 'relative',
                         height: '95%',
-                        // width: '95%',
                         bgcolor: 'rgba(0, 0, 0, 0.5)',
-                        // border: '1px solid black',
                         outline: 'none',
                         p: 2,
                         display: 'flex',
@@ -128,23 +123,36 @@ function ImageGrid() {
                         <div
                             id='information'
                             className={visibility}
+                            // className={styles.information}
                             onMouseEnter={() => setIsShown(true)}
                         >
                             <Typography
                                 variant='h5'
                                 component='h3'
+                                sx={{
+                                    fontVariant: 'small-caps',
+                                    display: 'inline-block',
+                                }}
                             >
-                                {photo.title}
+                                {`${photo.title} -`}
                             </Typography>
                             <Typography
                                 variant='p'
                                 component='p'
+                                sx={{
+                                    marginLeft: '10px',
+                                    display: 'inline-block',
+                                }}
                             >
-                                {photo.photographer}
+                                {`${photo.photographer}`}
                             </Typography>
                             <Typography
                                 variant='p'
                                 component='p'
+                                sx={{
+                                    marginTop: '20px',
+                                    fontStyle: 'italic'
+                                }}
                             >
                                 {photo.description}
                             </Typography>
