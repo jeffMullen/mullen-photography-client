@@ -11,13 +11,36 @@ import { CHANGE_SINGLE_PHOTO } from '../../../utils/actions';
 import { useStoreContext } from '../../../utils/GlobalState';
 import styles from './ImageGrid.module.scss';
 
+
 function ImageGrid() {
     const [state, dispatch] = useStoreContext();
 
     const { currentCategory } = state;
     const { photo } = state;
 
+    const [category, setCategory] = useState(currentCategory);
 
+
+    // FILTERING IMAGE LIST to be rendered based on currentCategory
+    let filteredImages = [];
+
+    if (currentCategory === 'All') {
+        filteredImages = imageData;
+    } else {
+        filteredImages = imageData.filter(image =>
+            image.category === currentCategory
+        );
+    }
+    const [imgArrLength, setImgArrLength] = useState(filteredImages.length);
+
+    // window.onload()
+    // setImgArrLength(filteredImages.length);
+
+    console.log("filtered images", filteredImages)
+    console.log("ARRAY LENGTH", imgArrLength);
+
+
+    // ORIENTATION, VIEW WIDTHS, and COLUMN COUNT state
     const [orientation, setOrientation] = useState(window.orientation);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
@@ -31,33 +54,53 @@ function ImageGrid() {
     // MODAL photo text info state - displayed or hidden
     const [isShown, setIsShown] = useState(false);
 
+    useEffect(() => {
+        setImgArrLength(filteredImages.length);
+    }, [filteredImages])
+    console.log(imgArrLength);
+
     // Check which orientation a mobile phone is in and display accordingly
     useEffect(() => {
+        // setImgArrLength
+
         if (orientation === 0) {
             setColumnCount(1);
         } else if (orientation === 90) {
-            vw < 1000 ?
-                setColumnCount(2) : setColumnCount(3);
+            // If screen is landscape and less than 1000px
+            if (vw < 1000) {
+                if (imgArrLength === 1) {
+                    setColumnCount(1)
+                } else {
+                    setColumnCount(2)
+                }
+            } else {
+                if (imgArrLength === 1) {
+                    setColumnCount(1);
+                } else if (imgArrLength === 2) {
+                    setColumnCount(2);
+                } else if (imgArrLength === 3) {
+                    console.log("HIT")
+                    setColumnCount(3);
+                }
+            }
+            // if (imgArrLength < 2 || vw < 1000) {
+            //     setColumnCount(2)
+            // }
+            // vw < 1000 ?
+            //     setColumnCount(2) : setColumnCount(3);
         }
-    }, [orientation, vw]);
+    }, [orientation, vw, imgArrLength, category]);
 
-    let filteredImages = [];
+    console.log("COLUMN COUNT", columnCount);
 
-    if (currentCategory === 'All') {
-        filteredImages = imageData;
-    } else {
-        filteredImages = imageData.filter(image =>
-            image.category === currentCategory
-        );
-    }
-
-    console.log("filtered images", filteredImages)
 
     // Listen for a change in mobile orientation
     window.addEventListener('orientationchange', (e) => {
         setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
         setOrientation(window.orientation);
     });
+
+
 
     // Send full sized image to Modal Display when image is clicked
     const routeToPhoto = async (e) => {
@@ -73,6 +116,8 @@ function ImageGrid() {
 
         handleOpen();
     };
+
+
 
     // Setting the visibility of the photo info in modal - based on isShown local state
     let visibility;

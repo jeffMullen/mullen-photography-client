@@ -32,6 +32,7 @@ function NavDrawer(theme) {
         setDrawerState({ [anchor]: open });
     };
 
+    // LINKS TO GO INSIDE MENU/DRAWER
     const list = (anchor) => (
         <Box
             sx={{
@@ -42,44 +43,48 @@ function NavDrawer(theme) {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                <ListItem
-                    button
-                    key={`Home`}
+                <Link
+                    href={`/`}
+                    color="inherit"
+                    underline="none"
                 >
-                    <Link
-                        href={`/`}
-                        color="inherit"
-                        underline="none"
+                    <ListItem
+                        button
+                        key={`Home`}
                     >
+
                         <ListItemText
                             primary={`Home`}
                             sx={{
                                 fontWeight: (theme) => theme.typography.fontWeightBold,
-                                fontVariant: 'small-caps'
+                                fontVariant: 'small-caps',
+                                paddingLeft: '15px',
                             }}
                         />
-                    </Link>
-                </ListItem>
+                    </ListItem>
+                </Link>
                 {['About', 'Gallery'].map((text, index) => (
-                    <ListItem
-                        button
-                        key={text}
-                    // className={styles.listItemText}
+                    <Link
+                        href={`/${text}`}
+                        color="inherit"
+                        underline="none"
                     >
-                        <Link
-                            href={`/${text}`}
-                            color="inherit"
-                            underline="none"
+                        <ListItem
+                            button
+                            key={text}
+                        // className={styles.listItemText}
                         >
+
                             <ListItemText
                                 primary={text}
                                 sx={{
                                     fontWeight: (theme) => theme.typography.fontWeightBold,
-                                    fontVariant: 'small-caps'
+                                    fontVariant: 'small-caps',
+                                    paddingLeft: '15px',
                                 }}
                             />
-                        </Link>
-                    </ListItem>
+                        </ListItem>
+                    </Link>
                 ))}
             </List>
         </Box >
