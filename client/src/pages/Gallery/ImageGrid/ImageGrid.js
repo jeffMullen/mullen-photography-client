@@ -148,9 +148,9 @@ function ImageGrid() {
                     sx={{
                         position: 'relative',
                         height: '95%',
-                        bgcolor: 'rgba(0, 0, 0, 0.5)',
+                        // bgcolor: 'rgba(0, 0, 0, 0.5)',
                         outline: 'none',
-                        p: 2,
+                        p: 0,
                         display: 'flex',
                         alignItems: 'center',
                     }}

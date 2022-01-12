@@ -29,8 +29,7 @@
 }
 
 // Add functionality to hover so you know you're over the button
-.back,
-.forward {
+.button {
     color: white;
 }
 
@@ -40,4 +39,8 @@
 
 .forward {
     margin-left: 1rem;
+}
+
+.disable {
+    color: rgba(0, 0, 0, 0.5);
 }
