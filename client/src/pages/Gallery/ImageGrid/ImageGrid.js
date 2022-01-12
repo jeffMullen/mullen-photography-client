@@ -10,6 +10,7 @@ import SinglePhoto from './SinglePhoto/SinglePhoto';
 import { CHANGE_SINGLE_PHOTO } from '../../../utils/actions';
 import { useStoreContext } from '../../../utils/GlobalState';
 import styles from './ImageGrid.module.scss';
+import ImageModal from './ImageModal/ImageModal';
 
 
 function ImageGrid() {
@@ -46,7 +47,7 @@ function ImageGrid() {
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
 
     // MODAL STATE
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     // MODAL FUNCTIONS
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -104,6 +105,7 @@ function ImageGrid() {
 
     // Send full sized image to Modal Display when image is clicked
     const routeToPhoto = async (e) => {
+        console.log(e.currentTarget.dataset.photo)
         const data = JSON.parse(e.currentTarget.dataset.photo);
 
         // Set photo details to local storage
@@ -139,7 +141,6 @@ function ImageGrid() {
                             key={item.img}
                             item={item}
                             routeToPhoto={routeToPhoto}
-                            handleOpen={handleOpen}
                         />
                     })}
                 </ImageList>
@@ -147,6 +148,32 @@ function ImageGrid() {
 
             {/* Modal displaying image appears when images are clicked */}
             <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
+                <Box
+                    sx={{
+                        position: 'relative',
+                        height: '95%',
+                        bgcolor: 'rgba(0, 0, 0, 0.5)',
+                        outline: 'none',
+                        p: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    <ImageModal />
+
+                </Box>
+            </Modal>
+            {/* <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -217,7 +244,7 @@ function ImageGrid() {
 
                     </div>
                 </Box>
-            </Modal>
+            </Modal> */}
         </Box >
     );
 };
