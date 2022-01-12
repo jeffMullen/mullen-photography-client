@@ -155,7 +155,7 @@ function ImageGrid() {
                         alignItems: 'center',
                     }}
                 >
-                    <ImageModal />  {/* Conent of the modal */}
+                    <ImageModal filteredImages={filteredImages} />  {/* Conent of the modal */}
 
                 </Box>
             </Modal>

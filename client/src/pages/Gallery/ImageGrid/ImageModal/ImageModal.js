@@ -3,13 +3,24 @@ import Typography from '@mui/material/Typography';
 import { useStoreContext } from '../../../../utils/GlobalState';
 import styles from './ImageModal.module.scss';
 
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
-function ImageModal({ handleClose }) {
+
+function ImageModal({ filteredImages }) {
     const [state, dispatch] = useStoreContext();
 
-    const { photo } = state;
+    let statePhoto = state.photo;
+
+    const [photo, setPhoto] = useState(statePhoto);
+    console.log(photo)
+
+    // let currentIndex = filteredImages.findIndex(index => index.img === statePhoto.img)
+    // console.log(currentIndex)
+    const [currentIndex, setCurrentIndex] = useState(filteredImages.findIndex(index => index.img === statePhoto.img));
 
     const [isShown, setIsShown] = useState(false);
+
 
     // Setting the visibility of the photo info in modal - based on isShown local state
     let visibility;
@@ -18,17 +29,55 @@ function ImageModal({ handleClose }) {
         visibility = styles.information;
     } else {
         visibility = styles.hidden;
-    }
+    };
+
+
+    // Cycle through photos in the filteredImages array
+    // When forward and back arrows are clicked
+    const changePhoto = (e) => {
+        let id = e.currentTarget.id;
+        console.log(id)
+
+        // if it is forward - change photo to index + 1;  if back index -1
+        if (id === 'forward') {
+            setCurrentIndex(currentIndex + 1);
+        } else {
+            setCurrentIndex(currentIndex - 1);
+        }
+
+    };
+
+    // When currentIndex is changed - set the new photo
+    useEffect(() => {
+        setPhoto(filteredImages[currentIndex]);
+    }, [currentIndex, filteredImages])
 
 
     return (
         <>
+            <ArrowBackIosNewIcon
+                id='back'
+                onClick={(e) => {
+                    changePhoto(e)
+                }}
+                fontSize='large'
+                className={styles.back} />
+
             <img src={photo.img}
                 className={styles.dimensions}
                 alt={`Title: ${photo.title}`}
                 onMouseEnter={() => setIsShown(true)}
                 onMouseLeave={() => setIsShown(false)}
             ></img>
+
+            <ArrowForwardIosIcon
+                id='forward'
+                onClick={(e) => {
+                    changePhoto(e)
+                }}
+                fontSize='large'
+                className={styles.forward} />
+
             <div
                 className={styles.dimensions}
             >
@@ -72,6 +121,6 @@ function ImageModal({ handleClose }) {
             </div>
         </>
     )
-}
+};
 
 export default ImageModal;

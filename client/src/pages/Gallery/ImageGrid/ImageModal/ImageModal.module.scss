@@ -8,7 +8,7 @@
 .hidden {
     position: absolute;
     margin-top: 25px;
-    left: 5%;
+    left: 10%;
     // transform: translate(-50%);
     color: white;
     align-self: start;
@@ -26,4 +26,18 @@
     opacity: 0;
     transition-duration: .7s;
     transition-property: opacity;
+}
+
+// Add functionality to hover so you know you're over the button
+.back,
+.forward {
+    color: white;
+}
+
+.back {
+    margin-right: 1rem;
+}
+
+.forward {
+    margin-left: 1rem;
 }
