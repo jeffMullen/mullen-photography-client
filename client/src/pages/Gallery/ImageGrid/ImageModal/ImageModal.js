@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import { useStoreContext } from '../../../../utils/GlobalState';
 import styles from './ImageModal.module.scss';
 
@@ -9,12 +7,7 @@ import styles from './ImageModal.module.scss';
 function ImageModal({ handleClose }) {
     const [state, dispatch] = useStoreContext();
 
-    const { currentCategory } = state;
     const { photo } = state;
-
-    console.log('photo', photo)
-
-    const [open, setOpen] = useState(false);
 
     const [isShown, setIsShown] = useState(false);
 
@@ -29,28 +22,6 @@ function ImageModal({ handleClose }) {
 
 
     return (
-        // <Modal
-        //         open={open}
-        //         onClose={handleClose}
-        //         aria-labelledby="modal-modal-title"
-        //         aria-describedby="modal-modal-description"
-        //         sx={{
-        //             display: 'flex',
-        //             justifyContent: 'center',
-        //             alignItems: 'center',
-        //         }}
-        //     >
-        // <Box
-        //     sx={{
-        //         position: 'relative',
-        //         height: '95%',
-        //         bgcolor: 'rgba(0, 0, 0, 0.5)',
-        //         outline: 'none',
-        //         p: 2,
-        //         display: 'flex',
-        //         alignItems: 'center',
-        //     }}
-        // >
         <>
             <img src={photo.img}
                 className={styles.dimensions}
@@ -98,11 +69,8 @@ function ImageModal({ handleClose }) {
                         {photo.description}
                     </Typography>
                 </div>
-
             </div>
         </>
-        // </Box>
-        // </Modal>
     )
 }
 
