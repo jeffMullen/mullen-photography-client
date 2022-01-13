@@ -36,17 +36,17 @@ function ImageModal({ filteredImages }) {
     let back;
 
     if (currentIndex === 0) {
-        back = `${styles.disable} ${styles.button} ${styles.back}`;
+        back = `${styles.disable} ${styles.back}`;
     } else {
-        back = `${styles.back} ${styles.button}`;
+        back = `${styles.back} ${styles.buttonBack}`;
     }
 
     let forward;
 
     if (currentIndex === filteredImages.length - 1) {
-        forward = `${styles.disable} ${styles.button} ${styles.forward}`;
+        forward = `${styles.disable} ${styles.forward}`;
     } else {
-        forward = `${styles.forward} ${styles.button}`;
+        forward = `${styles.forward} ${styles.buttonForward}`;
     }
 
 
@@ -72,24 +72,27 @@ function ImageModal({ filteredImages }) {
 
     return (
         <>
-            {currentIndex === 0 ?
-                <ArrowBackIosNewIcon
-                    // sx={{ display: 'none' }}
-                    id='back'
-                    fontSize='large'
-                    className={back} />
+            {/* If it is the first photo, disable the onClick attribute */}
+            <div
+                className={back}
+            >
+                {currentIndex === 0 ?
+                    <ArrowBackIosNewIcon
+                        id='back'
+                        fontSize='large'
+                    />
 
-                :
+                    :
 
-                <ArrowBackIosNewIcon
-                    // sx={{ display: 'none' }}
-                    id='back'
-                    onClick={(e) => {
-                        changePhoto(e)
-                    }}
-                    fontSize='large'
-                    className={back} />
-            }
+                    <ArrowBackIosNewIcon
+                        id='back'
+                        onClick={(e) => {
+                            changePhoto(e)
+                        }}
+                        fontSize='large'
+                    />
+                }
+            </div>
             <Box
                 sx={{
                     position: 'relative',
@@ -153,13 +156,30 @@ function ImageModal({ filteredImages }) {
                     </div>
                 </div>
             </Box>
-            <ArrowForwardIosIcon
-                id='forward'
-                onClick={(e) => {
-                    changePhoto(e)
-                }}
-                fontSize='large'
-                className={forward} />
+            <div
+                className={forward}
+            >
+                {/* If it is the last photo, disable the onClick attribute */}
+                {currentIndex === filteredImages.length - 1 ?
+
+                    <ArrowForwardIosIcon
+                        id='forward'
+                        fontSize='large'
+                    // className={forward} 
+                    />
+
+                    :
+
+                    <ArrowForwardIosIcon
+                        id='forward'
+                        onClick={(e) => {
+                            changePhoto(e)
+                        }}
+                        fontSize='large'
+                    // className={forward} 
+                    />
+                }
+            </div>
         </>
     )
 };

@@ -29,18 +29,32 @@
 }
 
 // Add functionality to hover so you know you're over the button
-.button {
+// .buttonDisable,
+.buttonForward,
+.buttonBack {
     color: white;
+    display: flex;
+    border-radius: 3px;
+}
+
+.buttonForward,
+.buttonBack {
+    transition: .3s;
+        &:hover {
+            background: rgba(16, 16, 16, 0.776);
+        }
 }
 
 .back {
     margin-right: 1rem;
+    padding: .7rem .5rem .7rem .2rem;    
 }
 
 .forward {
     margin-left: 1rem;
+    padding: .7rem .2rem .7rem .5rem;
 }
 
 .disable {
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0);
 }
