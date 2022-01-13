@@ -3,6 +3,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography';
 import { useStoreContext } from '../../../utils/GlobalState';
 import { ADD_CATEGORY_FILTER } from '../../../utils/actions';
+import styles from './Categories.module.scss';
+
 
 
 function Categories() {
@@ -39,6 +41,7 @@ function Categories() {
                     <Typography key={category}
                         variant='overline'
                         component='h3'
+                        className={styles.category}
                         sx={{
                             fontSize: '1rem'
                         }}

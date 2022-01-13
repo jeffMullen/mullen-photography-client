@@ -1,10 +1,12 @@
 import React from 'react';
 import ImageListItem from '@mui/material/ImageListItem';
+import styles from './SinglePhoto.module.scss';
 
 function SinglePhoto({ item, routeToPhoto }) {
 
     return (
         <ImageListItem
+            className={styles.image}
             data-photo={JSON.stringify(item)}
             sx={{
                 display: 'flex',

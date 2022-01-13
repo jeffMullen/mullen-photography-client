@@ -14,10 +14,7 @@ function ImageModal({ filteredImages }) {
     let statePhoto = state.photo;
 
     const [photo, setPhoto] = useState(statePhoto);
-    console.log(photo)
 
-    // let currentIndex = filteredImages.findIndex(index => index.img === statePhoto.img)
-    // console.log(currentIndex)
     const [currentIndex, setCurrentIndex] = useState(filteredImages.findIndex(index => index.img === statePhoto.img));
 
     const [isShown, setIsShown] = useState(false);
@@ -53,9 +50,7 @@ function ImageModal({ filteredImages }) {
     // Cycle through photos in the filteredImages array
     // When forward and back arrows are clicked
     const changePhoto = (e) => {
-        console.log(e.currentTarget)
         let id = e.currentTarget.id;
-        console.log(id)
 
         // if it is forward - change photo to index + 1;  if back index -1
         if (id === 'forward') {
@@ -63,7 +58,6 @@ function ImageModal({ filteredImages }) {
         } else {
             setCurrentIndex(currentIndex - 1);
         }
-
     };
 
     // When currentIndex is changed - set the new photo
