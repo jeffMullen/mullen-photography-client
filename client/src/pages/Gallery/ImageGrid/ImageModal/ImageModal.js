@@ -53,7 +53,9 @@ function ImageModal({ filteredImages }) {
     // Cycle through photos in the filteredImages array
     // When forward and back arrows are clicked
     const changePhoto = (e) => {
+        console.log(e.currentTarget)
         let id = e.currentTarget.id;
+        console.log(id)
 
         // if it is forward - change photo to index + 1;  if back index -1
         if (id === 'forward') {
@@ -73,26 +75,30 @@ function ImageModal({ filteredImages }) {
     return (
         <>
             {/* If it is the first photo, disable the onClick attribute */}
-            <div
-                className={back}
-            >
-                {currentIndex === 0 ?
+            {currentIndex === 0 ?
+                <div
+                    className={back}
+                    id='back'
+                >
                     <ArrowBackIosNewIcon
-                        id='back'
                         fontSize='large'
                     />
+                </div>
 
-                    :
+                :
 
+                <div
+                    className={back}
+                    onClick={(e) => {
+                        changePhoto(e)
+                    }}
+                    id='back'
+                >
                     <ArrowBackIosNewIcon
-                        id='back'
-                        onClick={(e) => {
-                            changePhoto(e)
-                        }}
                         fontSize='large'
                     />
-                }
-            </div>
+                </div>
+            }
             <Box
                 sx={{
                     position: 'relative',
@@ -156,30 +162,33 @@ function ImageModal({ filteredImages }) {
                     </div>
                 </div>
             </Box>
-            <div
-                className={forward}
-            >
-                {/* If it is the last photo, disable the onClick attribute */}
-                {currentIndex === filteredImages.length - 1 ?
 
+            {/* FORWARD CYCLE BUTTON */}
+            {/* If it is the last photo, disable the onClick attribute */}
+            {currentIndex === filteredImages.length - 1 ?
+                <div
+                    className={forward}
+                    id='forward'
+                >
                     <ArrowForwardIosIcon
-                        id='forward'
                         fontSize='large'
-                    // className={forward} 
                     />
+                </div>
 
-                    :
+                :
 
+                <div
+                    className={forward}
+                    onClick={(e) => {
+                        changePhoto(e)
+                    }}
+                    id='forward'
+                >
                     <ArrowForwardIosIcon
-                        id='forward'
-                        onClick={(e) => {
-                            changePhoto(e)
-                        }}
                         fontSize='large'
-                    // className={forward} 
                     />
-                }
-            </div>
+                </div>
+            }
         </>
     )
 };
