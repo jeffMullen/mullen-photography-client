@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 
-function ImageModal({ filteredImages }) {
+function ImageModal({ filteredImages, orientation }) {
     const [state, dispatch] = useStoreContext();
 
     let statePhoto = state.photo;
@@ -22,8 +22,7 @@ function ImageModal({ filteredImages }) {
 
     // Setting the visibility of the photo info in modal - based on isShown local state
     let visibility;
-
-    if (isShown) {
+    if (orientation === 0) {
         visibility = styles.information;
     } else {
         visibility = styles.hidden;
@@ -68,6 +67,7 @@ function ImageModal({ filteredImages }) {
 
     return (
         <>
+            <button className={styles.close}>X</button>
             {/* If it is the first photo, disable the onClick attribute */}
             {currentIndex === 0 ?
                 <div
@@ -121,7 +121,7 @@ function ImageModal({ filteredImages }) {
 
 
                 <div
-                    // className={styles.dimensions}
+                    className={styles.dimensions}
                 >
                     <div
                         id='information'

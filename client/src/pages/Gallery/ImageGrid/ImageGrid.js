@@ -142,6 +142,7 @@ function ImageGrid() {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    background: 'rgba(0, 0, 0, .25)'
                 }}
             >
                 <Box
@@ -155,10 +156,15 @@ function ImageGrid() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        transform: {xs: 'translateY(15%)'}
                         // textAlign: 'center'
                     }}
                 >
-                    <ImageModal filteredImages={filteredImages} />  {/* Conent of the modal */}
+                    {/* Conent of the modal */}
+                    <ImageModal     
+                    filteredImages={filteredImages} 
+                    orientation={orientation}
+                    />  
 
                 </Box>
             </Modal>

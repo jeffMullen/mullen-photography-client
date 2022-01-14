@@ -1,3 +1,18 @@
+.close {
+    position: absolute;
+    z-index: 50;
+    top: -85%;
+    right: 5%;
+    // background: rgba(16, 16, 16, 0.9);
+    background: rgba(255, 255, 255, .3);
+    color: white;
+    padding: .7rem .8rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.1rem;
+}
+
 .dimensions {
     height: 100%;
     width: 100%;
@@ -7,9 +22,12 @@
 .information,
 .hidden {
     position: absolute;
-    margin-top: 25px;
-    left: 5%;
-    // transform: translate(-50%);
+    // margin-top: 25px;
+    border-radius: 3px;
+    width: 80%;
+    left: 50%;
+    top: -55%;
+    transform: translate(-50%);
     color: white;
     align-self: start;
     background: rgba(0, 0, 0, .9);
@@ -45,15 +63,31 @@
         }
 }
 
+.back,
+.forward {
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    
+}
+
 .back {
-    margin-right: 1rem;
-    padding: .7rem .5rem .7rem .2rem;    
+    left: 30%;
 }
 
 .forward {
-    margin-left: 1rem;
-    padding: .7rem .2rem .7rem .5rem;
+    right: 30%;
 }
+
+// .back {
+//     margin-right: 1rem;
+//     padding: .7rem .5rem .7rem .2rem;    
+// }
+
+// .forward {
+//     margin-left: 1rem;
+//     padding: .7rem .2rem .7rem .5rem;
+// }
 
 .disable {
     color: rgba(0, 0, 0, 0);
