@@ -1,9 +1,9 @@
+// MODAL CLOSE BUTTON
 .close {
     position: absolute;
     z-index: 50;
     top: -85%;
     right: 5%;
-    // background: rgba(16, 16, 16, 0.9);
     background: rgba(255, 255, 255, .3);
     color: white;
     padding: .7rem .8rem;
@@ -11,15 +11,16 @@
     border: none;
     border-radius: 3px;
     font-size: 1.1rem;
-    // font-weight: bold;
 }
 
+// IMAGE
 .dimensions {
     height: 100%;
     width: 100%;
     object-fit: contain;
 }
 
+// PHOTO INFORMATION STYLES
 .information,
 .hidden {
     position: absolute;
@@ -90,6 +91,63 @@
 //     padding: .7rem .2rem .7rem .5rem;
 // }
 
+
+// DISABLE CYCLE BUTTON
 .disable {
     color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (min-width: 430px) {
+    .information {
+        top: -45%;
+    }
+
+    .close {
+        top: -75%;
+    }
+}
+
+@media screen and (min-width: 530px) {
+    .information {
+        top: -35%;
+    }
+
+    .close {
+        top: -55%;
+    }
+}
+
+// LANDSCAPE MOBILE STYLES
+@media screen and (orientation: landscape) {
+    // .dimensions {
+    //     padding: 1rem;
+    // }
+
+    .back,
+    .forward {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+    }
+
+    .back {
+        left: 0;
+        
+    }
+
+    .forward {
+        right: 0;
+    }
+
+    .close {
+        top: 15%; 
+    }
+
+    .information {
+        top: 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
 }

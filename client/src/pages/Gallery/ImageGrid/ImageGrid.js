@@ -10,6 +10,7 @@ import Modal from '@mui/material/Modal';
 import ImageModal from './ImageModal/ImageModal';
 import SinglePhoto from './SinglePhoto/SinglePhoto';
 import imageData from '../../../mullen-photos/photographs';
+import styles from './ImageGrid.module.scss';
 
 // State Management
 import { CHANGE_SINGLE_PHOTO } from '../../../utils/actions';
@@ -146,6 +147,7 @@ function ImageGrid() {
                 }}
             >
                 <Box
+                    className={styles.modalBox}
                     sx={{
                         position: 'relative',
                         // height: '95%',
@@ -156,7 +158,6 @@ function ImageGrid() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        transform: {xs: 'translateY(20%)'}
                         // textAlign: 'center'
                     }}
                 >

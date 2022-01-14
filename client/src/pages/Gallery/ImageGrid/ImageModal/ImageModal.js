@@ -22,9 +22,12 @@ function ImageModal({ filteredImages, orientation, handleClose }) {
 
     // Setting the visibility of the photo info in modal - based on isShown local state
     let visibility;
-    if (orientation === 0) {
+    if (orientation === 0 || (orientation === 90 && isShown)) {
         visibility = styles.information;
-    } else {
+    } else if (orientation === 90 && !isShown) {
+        visibility = styles.hidden;
+    }
+    else {
         visibility = styles.hidden;
     };
 
