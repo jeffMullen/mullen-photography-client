@@ -147,12 +147,15 @@ function ImageGrid() {
                 <Box
                     sx={{
                         position: 'relative',
-                        height: '95%',
+                        // height: '95%',
+                        // width: '100vw',
                         // bgcolor: 'rgba(0, 0, 0, 0.5)',
                         outline: 'none',
                         p: 0,
                         display: 'flex',
                         alignItems: 'center',
+                        justifyContent: 'center',
+                        // textAlign: 'center'
                     }}
                 >
                     <ImageModal filteredImages={filteredImages} />  {/* Conent of the modal */}

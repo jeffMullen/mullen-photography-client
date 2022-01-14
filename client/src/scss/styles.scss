@@ -3,16 +3,18 @@ html {
 }
 
 body {
-    min-height: 100%;
+    // min-height: 100%;
 }
 
 .App {
-    margin: 15px;
+    // margin: 15px;
 }
 
 main {
-    margin-top: 71px;
-    height: 100%;
+    // margin-top: 71px;
+    margin: 71px 15px 15px 15px;
+    // height: 100%;
+    height: calc(100vh - 94px);
 }
 
 @media  screen and (min-width: 600px) {

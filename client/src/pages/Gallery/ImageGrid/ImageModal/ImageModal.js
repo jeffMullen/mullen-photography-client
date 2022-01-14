@@ -97,11 +97,17 @@ function ImageModal({ filteredImages }) {
                 sx={{
                     position: 'relative',
                     height: '95%',
+                    // width: '100%',
                     bgcolor: 'rgba(0, 0, 0, 0.5)',
                     outline: 'none',
-                    p: 2,
+                    p: {
+                        xs: 0,
+
+                    },
                     display: 'flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
                 }}
             >
 
@@ -115,7 +121,7 @@ function ImageModal({ filteredImages }) {
 
 
                 <div
-                    className={styles.dimensions}
+                    // className={styles.dimensions}
                 >
                     <div
                         id='information'
