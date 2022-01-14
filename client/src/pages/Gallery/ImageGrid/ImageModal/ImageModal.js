@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 
-function ImageModal({ filteredImages, orientation }) {
+function ImageModal({ filteredImages, orientation, handleClose }) {
     const [state, dispatch] = useStoreContext();
 
     let statePhoto = state.photo;
@@ -67,7 +67,10 @@ function ImageModal({ filteredImages, orientation }) {
 
     return (
         <>
-            <button className={styles.close}>X</button>
+            <button 
+            className={styles.close}
+            onClick={() => handleClose()}
+            >X</button>
             {/* If it is the first photo, disable the onClick attribute */}
             {currentIndex === 0 ?
                 <div

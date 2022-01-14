@@ -156,7 +156,7 @@ function ImageGrid() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        transform: {xs: 'translateY(15%)'}
+                        transform: {xs: 'translateY(20%)'}
                         // textAlign: 'center'
                     }}
                 >
@@ -164,6 +164,7 @@ function ImageGrid() {
                     <ImageModal     
                     filteredImages={filteredImages} 
                     orientation={orientation}
+                    handleClose={handleClose}
                     />  
 
                 </Box>
