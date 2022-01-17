@@ -11,6 +11,9 @@
     border: none;
     border-radius: 3px;
     font-size: 1.1rem;
+        &:focus {
+            outline: 2px solid black;
+        }
 }
 
 // IMAGE
@@ -20,10 +23,11 @@
     object-fit: contain;
 }
 
-// PHOTO INFORMATION STYLES
+// PHOTO INFORMATION POPUP STYLES
 .information,
 .hidden {
     position: absolute;
+    // z-index: 1000;
     // margin-top: 25px;
     border-radius: 3px;
     width: 80%;
@@ -81,16 +85,6 @@
     right: 30%;
 }
 
-// .back {
-//     margin-right: 1rem;
-//     padding: .7rem .5rem .7rem .2rem;    
-// }
-
-// .forward {
-//     margin-left: 1rem;
-//     padding: .7rem .2rem .7rem .5rem;
-// }
-
 
 // DISABLE CYCLE BUTTON
 .disable {
@@ -119,32 +113,34 @@
 
 // LANDSCAPE MOBILE STYLES
 @media screen and (orientation: landscape) {
-    // .dimensions {
-    //     padding: 1rem;
-    // }
-
     .back,
     .forward {
-        position: absolute;
-        z-index: 1;
+        position: relative;
         top: 0;
     }
 
     .back {
         left: 0;
-        
+        margin-right: 1rem;
+        padding: .7rem .5rem .7rem .2rem;  
     }
 
     .forward {
         right: 0;
+        margin-left: 1rem;
+        padding: .7rem .2rem .7rem .5rem;
     }
 
     .close {
-        top: 15%; 
+        top: 2.5%; 
+        right: 1%;
     }
 
     .information {
-        top: 0;
+        top: 5%;
+        left: 30%;
+        width: 50%;
+        // margin-top: 25px;
     }
 }
 

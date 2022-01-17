@@ -39,10 +39,12 @@ function ImageGrid() {
 
 
     // ORIENTATION, VIEW WIDTHS, and COLUMN COUNT state
-    const [orientation, setOrientation] = useState(window.orientation);
+    // const [orientation, setOrientation] = useState(window.orientation);
+    const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0]);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
-
+    console.log('ORIENTATION', orientation)
+    console.log(navigator.userAgent)
 
     // MODAL STATE
     const [open, setOpen] = useState(false);
@@ -61,9 +63,9 @@ function ImageGrid() {
     useEffect(() => {
         // setImgArrLength
 
-        if (orientation === 0) {
+        if (orientation === 'portrait') {
             setColumnCount(1);
-        } else if (orientation === 90) {
+        } else if (orientation === 'landscape') {
             // If screen is landscape and less than 1000px
             if (vw < 1000) {
                 if (imgArrLength === 1) {
@@ -81,12 +83,33 @@ function ImageGrid() {
                     setColumnCount(3);
                 }
             }
-            // if (imgArrLength < 2 || vw < 1000) {
-            //     setColumnCount(2)
-            // }
-            // vw < 1000 ?
-            //     setColumnCount(2) : setColumnCount(3);
         }
+        // if (orientation === 0) {
+        //     setColumnCount(1);
+        // } else if (orientation === 90) {
+        //     // If screen is landscape and less than 1000px
+        //     if (vw < 1000) {
+        //         if (imgArrLength === 1) {
+        //             setColumnCount(1)
+        //         } else {
+        //             setColumnCount(2)
+        //         }
+        //     } else {
+        //         if (imgArrLength === 1) {
+        //             setColumnCount(1);
+        //         } else if (imgArrLength === 2) {
+        //             setColumnCount(2);
+        //         } else if (imgArrLength === 3) {
+        //             console.log("HIT")
+        //             setColumnCount(3);
+        //         }
+        //     }
+        // if (imgArrLength < 2 || vw < 1000) {
+        //     setColumnCount(2)
+        // }
+        // vw < 1000 ?
+        //     setColumnCount(2) : setColumnCount(3);
+        // }
     }, [orientation, vw, imgArrLength, category]);
 
     console.log("COLUMN COUNT", columnCount);
@@ -95,7 +118,8 @@ function ImageGrid() {
     // Listen for a change in mobile orientation
     window.addEventListener('orientationchange', (e) => {
         setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
-        setOrientation(window.orientation);
+        // setOrientation(window.orientation);
+        setOrientation(window.screen.orientation.type.split('-')[0]);
     });
 
 
@@ -150,11 +174,11 @@ function ImageGrid() {
                     className={styles.modalBox}
                     sx={{
                         position: 'relative',
-                        // height: '95%',
+                        // height: {lg: '95%'},
                         // width: '100vw',
                         // bgcolor: 'rgba(0, 0, 0, 0.5)',
                         outline: 'none',
-                        p: 0,
+                        // p: {lg: 5},
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -162,11 +186,12 @@ function ImageGrid() {
                     }}
                 >
                     {/* Conent of the modal */}
-                    <ImageModal     
-                    filteredImages={filteredImages} 
-                    orientation={orientation}
-                    handleClose={handleClose}
-                    />  
+                    <ImageModal
+                        filteredImages={filteredImages}
+                        orientation={orientation}
+                        handleClose={handleClose}
+                        vw={vw}
+                    />
 
                 </Box>
             </Modal>

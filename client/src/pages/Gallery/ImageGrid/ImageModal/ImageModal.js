@@ -6,9 +6,11 @@ import styles from './ImageModal.module.scss';
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import CloseIcon from '@mui/icons-material/Close';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 
-function ImageModal({ filteredImages, orientation, handleClose }) {
+function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     const [state, dispatch] = useStoreContext();
 
     let statePhoto = state.photo;
@@ -21,11 +23,11 @@ function ImageModal({ filteredImages, orientation, handleClose }) {
 
 
     // Setting the visibility of the photo info in modal - based on isShown local state
+    // Show information if in mobile portrait mode, if tapped on mobile landscape mode, and if hovered on desktop
     let visibility;
-    if (orientation === 0 || (orientation === 90 && isShown)) {
+
+    if (orientation === 'portrait' || (orientation === 'landscape' && isShown)) {
         visibility = styles.information;
-    } else if (orientation === 90 && !isShown) {
-        visibility = styles.hidden;
     }
     else {
         visibility = styles.hidden;
@@ -67,13 +69,14 @@ function ImageModal({ filteredImages, orientation, handleClose }) {
         setPhoto(filteredImages[currentIndex]);
     }, [currentIndex, filteredImages])
 
-
     return (
         <>
-            <button 
-            className={styles.close}
-            onClick={() => handleClose()}
-            >X</button>
+            <button
+                className={styles.close}
+                onClick={() => handleClose()}
+            >
+                X
+            </button>
             {/* If it is the first photo, disable the onClick attribute */}
             {currentIndex === 0 ?
                 <div
@@ -116,16 +119,26 @@ function ImageModal({ filteredImages, orientation, handleClose }) {
                     textAlign: 'center',
                 }}
             >
+                {/* For mobile landscape, show photo information on screen tap */}
+                {/* For desktop, show photo information on mouse enter or leave (HOVER) */}
+                {vw < 1000 ?
+                    <img src={photo.img}
+                        className={styles.dimensions}
+                        alt={`Title: ${photo.title}`}
+                        onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
+                    ></img>
 
-                <img src={photo.img}
-                    className={styles.dimensions}
-                    alt={`Title: ${photo.title}`}
-                    onMouseEnter={() => setIsShown(true)}
-                    onMouseLeave={() => setIsShown(false)}
-                ></img>
+                    :
 
+                    <img src={photo.img}
+                        className={styles.dimensions}
+                        alt={`Title: ${photo.title}`}
+                        onMouseEnter={() => setIsShown(true)}
+                        onMouseLeave={() => setIsShown(false)}
+                    ></img>
+                }
 
-
+                {/* Photo information */}
                 <div
                     className={styles.dimensions}
                 >
