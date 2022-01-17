@@ -23,6 +23,7 @@ function ImageGrid() {
     const { currentCategory } = state;
 
     const [category, setCategory] = useState(currentCategory);
+    console.log("CURRENT CATEGORY", currentCategory);
 
 
     // FILTERING IMAGE LIST to be rendered based on currentCategory
@@ -61,8 +62,6 @@ function ImageGrid() {
 
     // Check which orientation a mobile phone is in and display accordingly
     useEffect(() => {
-        // setImgArrLength
-
         if (orientation === 'portrait') {
             setColumnCount(1);
         } else if (orientation === 'landscape') {
@@ -73,47 +72,17 @@ function ImageGrid() {
                 } else {
                     setColumnCount(2)
                 }
-            } else {
+            } else {    // Desktop column count
                 if (imgArrLength === 1) {
                     setColumnCount(1);
                 } else if (imgArrLength === 2) {
                     setColumnCount(2);
-                } else if (imgArrLength === 3) {
-                    console.log("HIT")
+                } else {
                     setColumnCount(3);
                 }
             }
         }
-        // if (orientation === 0) {
-        //     setColumnCount(1);
-        // } else if (orientation === 90) {
-        //     // If screen is landscape and less than 1000px
-        //     if (vw < 1000) {
-        //         if (imgArrLength === 1) {
-        //             setColumnCount(1)
-        //         } else {
-        //             setColumnCount(2)
-        //         }
-        //     } else {
-        //         if (imgArrLength === 1) {
-        //             setColumnCount(1);
-        //         } else if (imgArrLength === 2) {
-        //             setColumnCount(2);
-        //         } else if (imgArrLength === 3) {
-        //             console.log("HIT")
-        //             setColumnCount(3);
-        //         }
-        //     }
-        // if (imgArrLength < 2 || vw < 1000) {
-        //     setColumnCount(2)
-        // }
-        // vw < 1000 ?
-        //     setColumnCount(2) : setColumnCount(3);
-        // }
     }, [orientation, vw, imgArrLength, category]);
-
-    console.log("COLUMN COUNT", columnCount);
-
 
     // Listen for a change in mobile orientation
     window.addEventListener('orientationchange', (e) => {
