@@ -21,6 +21,14 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
     const [isShown, setIsShown] = useState(false);
 
+    let mobile;
+
+    if (vw < 1000) {
+        mobile = true;
+    } else {
+        mobile = false;
+    }
+
 
     // Setting the visibility of the photo info in modal - based on isShown local state
     // Show information if in mobile portrait mode, if tapped on mobile landscape mode, and if hovered on desktop
@@ -35,19 +43,26 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
     // Disable forward and back buttons if currentIndex is 0 or last index
     let back;
+    let mobileBack;
 
     if (currentIndex === 0) {
         back = `${styles.disable} ${styles.back}`;
+        mobileBack = back;
     } else {
         back = `${styles.back} ${styles.buttonBack}`;
+        mobileBack = `${styles.back} ${styles.mobileButton} ${styles.hightlight}`;
     }
 
+
     let forward;
+    let mobileForward;
 
     if (currentIndex === filteredImages.length - 1) {
         forward = `${styles.disable} ${styles.forward}`;
+        mobileForward = forward;
     } else {
         forward = `${styles.forward} ${styles.buttonForward}`;
+        mobileForward = `${styles.forward} ${styles.mobileButton} ${styles.hightlight}`;
     }
 
 
@@ -80,7 +95,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
             {/* If it is the first photo, disable the onClick attribute */}
             {currentIndex === 0 ?
                 <div
-                    className={back}
+                    className={mobile ? mobileBack : back}
                     id='back'
                 >
                     <ArrowBackIosNewIcon
@@ -91,10 +106,20 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 :
 
                 <div
-                    className={back}
+                    className={mobile ? mobileBack : back}
                     onClick={(e) => {
                         changePhoto(e)
                     }}
+                    onTouchStart={() => {
+                        console.log("START")
+                        // mobileBack = `${styles.back} ${styles.buttonBack}`
+                    }
+                    }
+                    onTouchEnd={() => {
+                        console.log("END")
+                        // mobileBack = `${styles.back} ${styles.mobileButton}`
+                    }
+                    }
                     id='back'
                 >
                     <ArrowBackIosNewIcon
@@ -186,7 +211,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
             {/* If it is the last photo, disable the onClick attribute */}
             {currentIndex === filteredImages.length - 1 ?
                 <div
-                    className={forward}
+                    className={mobile ? mobileForward : forward}
                     id='forward'
                 >
                     <ArrowForwardIosIcon
@@ -197,7 +222,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 :
 
                 <div
-                    className={forward}
+                    className={mobile ? mobileForward : forward}
                     onClick={(e) => {
                         changePhoto(e)
                     }}

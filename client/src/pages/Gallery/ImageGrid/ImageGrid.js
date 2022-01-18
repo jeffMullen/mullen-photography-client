@@ -23,8 +23,6 @@ function ImageGrid() {
     const { currentCategory } = state;
 
     const [category, setCategory] = useState(currentCategory);
-    console.log("CURRENT CATEGORY", currentCategory);
-
 
     // FILTERING IMAGE LIST to be rendered based on currentCategory
     let filteredImages = [];
@@ -44,8 +42,6 @@ function ImageGrid() {
     const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0]);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
-    console.log('ORIENTATION', orientation)
-    console.log(navigator.userAgent)
 
     // MODAL STATE
     const [open, setOpen] = useState(false);
@@ -87,7 +83,6 @@ function ImageGrid() {
     // Listen for a change in mobile orientation
     window.addEventListener('orientationchange', (e) => {
         setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
-        // setOrientation(window.orientation);
         setOrientation(window.screen.orientation.type.split('-')[0]);
     });
 

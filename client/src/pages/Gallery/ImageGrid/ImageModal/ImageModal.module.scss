@@ -53,11 +53,33 @@
 }
 
 // FORWARD AND BACK BUTTON STYLES
+.mobileButton,
 .buttonForward,
 .buttonBack {
     color: white;
     display: flex;
     border-radius: 3px;
+}
+
+.mobileButton {
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+.hightlight {
+    &:hover {
+        // background: rgba(16, 16, 16, 0.776);
+        animation-name: hightlight;
+    }
+}
+
+@keyframes highlight {
+    0% { background: 
+        rgba(0, 0, 0, 0); }
+    50% { background: 
+        rgba(16, 16, 16, 0.776); }
+    100% { background:
+        rgba(0, 0, 0, 0); }
 }
 
 .buttonForward,
