@@ -21,9 +21,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <Router>
             <div className="App">
-              <header className="App-header">
+              {/* <header className="App-header"> */}
                 <Header />
-              </header>
+              {/* </header> */}
               <main>
                 <Switch>
                   <Route exact path="/" component={Home} />

@@ -131,12 +131,10 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 sx={{
                     position: 'relative',
                     height: '95%',
-                    // width: '100%',
                     bgcolor: 'rgba(0, 0, 0, 0.5)',
                     outline: 'none',
                     p: {
                         xs: 0,
-
                     },
                     display: 'flex',
                     alignItems: 'center',
