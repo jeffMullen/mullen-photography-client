@@ -27,8 +27,6 @@
 .information,
 .hidden {
     position: absolute;
-    // z-index: 1000;
-    // margin-top: 25px;
     border-radius: 3px;
     width: 80%;
     left: 50%;
@@ -36,8 +34,10 @@
     transform: translate(-50%);
     color: white;
     align-self: start;
-    background: rgba(0, 0, 0, .9);
-    padding: 1.5rem;
+    background: radial-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .9));
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
 }
 
 .information {
