@@ -42,7 +42,7 @@ function ImageGrid() {
     const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0] || window.orientation);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
-    
+
     // MODAL STATE
     const [open, setOpen] = useState(false);
     // MODAL FUNCTIONS
@@ -107,19 +107,42 @@ function ImageGrid() {
 
     return (
         <Box>
-            <Paper>
-                <ImageList
-                    cols={columnCount}
-                    gap={8}>
-                    {filteredImages.map((item) => {
-                        return <SinglePhoto
-                            key={item.img}
-                            item={item}
-                            routeToPhoto={routeToPhoto}
-                        />
-                    })}
-                </ImageList>
-            </Paper>
+            {columnCount === 1 ?
+                <Paper
+                    sx={{
+                        maxWidth: '600px',
+                        margin: 'auto',
+                    }}
+                >
+                    <ImageList
+                        cols={columnCount}
+                        gap={8}>
+                        {filteredImages.map((item) => {
+                            return <SinglePhoto
+                                key={item.img}
+                                item={item}
+                                routeToPhoto={routeToPhoto}
+                            />
+                        })}
+                    </ImageList>
+                </Paper>
+
+                :
+
+                <Paper>
+                    <ImageList
+                        cols={columnCount}
+                        gap={8}>
+                        {filteredImages.map((item) => {
+                            return <SinglePhoto
+                                key={item.img}
+                                item={item}
+                                routeToPhoto={routeToPhoto}
+                            />
+                        })}
+                    </ImageList>
+                </Paper>
+            }
 
             {/* Modal displaying image appears when images are clicked */}
             <Modal
@@ -138,15 +161,10 @@ function ImageGrid() {
                     className={styles.modalBox}
                     sx={{
                         position: 'relative',
-                        // height: {lg: '95%'},
-                        // width: '100vw',
-                        // bgcolor: 'rgba(0, 0, 0, 0.5)',
                         outline: 'none',
-                        // p: {lg: 5},
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        // textAlign: 'center'
                     }}
                 >
                     {/* Conent of the modal */}
