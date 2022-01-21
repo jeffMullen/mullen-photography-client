@@ -39,10 +39,10 @@ function ImageGrid() {
 
     // ORIENTATION, VIEW WIDTHS, and COLUMN COUNT state
     // const [orientation, setOrientation] = useState(window.orientation);
-    const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0]);
+    const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0] || window.orientation);
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
-
+    
     // MODAL STATE
     const [open, setOpen] = useState(false);
     // MODAL FUNCTIONS

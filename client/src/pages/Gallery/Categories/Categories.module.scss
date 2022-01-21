@@ -1,5 +1,17 @@
+.current,
 .category {
+    position: relative;
     &:hover {
         cursor: pointer;
+    }
+}
+
+.current {
+    &::after {
+        content: '';
+        display: block;
+        width: 75%;
+        margin-top: -8px;
+        border-bottom: 1px solid black;
     }
 }
