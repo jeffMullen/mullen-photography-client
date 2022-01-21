@@ -11,14 +11,17 @@ const imageData = [
     {
         img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
         title: 'Burger',
+        category: 'Landscape'
     },
     {
         img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
         title: 'Camera',
+        category: 'Landscape'
     },
     {
         img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
         title: 'Coffee',
+        category: 'Urban'
     },
     {
         img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',

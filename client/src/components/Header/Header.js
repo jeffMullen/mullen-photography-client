@@ -65,6 +65,7 @@ function NavDrawer(theme) {
                 </Link>
                 {['About', 'Gallery'].map((text, index) => (
                     <Link
+                        key={text}
                         href={`/${text}`}
                         color="inherit"
                         underline="none"

@@ -18,7 +18,7 @@ function Gallery() {
                     marginTop: {
                         xs: '6rem',
                         lg: '9rem'
-                    }
+                    },
                 }}
             >
                 {/* Page Heading */}
@@ -52,6 +52,9 @@ function Gallery() {
                     <ImageGrid />
                 </Container>
             </Box>
+            <Box
+                sx={{height: '9rem',}}
+            ></Box>
         </>
     )
 };

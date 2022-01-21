@@ -5,7 +5,6 @@ import './scss/styles.scss';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Gallery from './pages/Gallery/Gallery';
-import Photograph from './pages/Photograph/Photograph';
 import Header from './components/Header/Header';
 
 import { ThemeProvider } from '@mui/material/styles';
@@ -22,15 +21,14 @@ function App() {
         <ThemeProvider theme={theme}>
           <Router>
             <div className="App">
-              <header className="App-header">
+              {/* <header className="App-header"> */}
                 <Header />
-              </header>
+              {/* </header> */}
               <main>
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/About" component={About} />
                   <Route exact path="/Gallery" component={Gallery} />
-                  <Route exact path="/Photograph/:title" component={Photograph} />
                 </Switch>
               </main>
             </div>

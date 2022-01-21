@@ -38,6 +38,21 @@ function Categories() {
                 }}
             >
                 {['All', 'Landscape', 'Urban', 'Abstract'].map(category =>
+                    category === currentCategory ?
+
+                    <Typography key={category}
+                        variant='overline'
+                        component='h3'
+                        className={styles.current}
+                        sx={{
+                            fontSize: '1rem',
+                        }}
+                        onClick={(e) =>
+                            setCategoryFilter(e)}
+                    >{category}</Typography>
+
+                    :
+
                     <Typography key={category}
                         variant='overline'
                         component='h3'
