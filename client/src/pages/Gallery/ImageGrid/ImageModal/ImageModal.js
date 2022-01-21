@@ -90,7 +90,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 className={styles.close}
                 onClick={() => handleClose()}
             >
-                X
+                <CloseIcon />
             </button>
             {/* If it is the first photo, disable the onClick attribute */}
             {currentIndex === 0 ?
@@ -105,27 +105,20 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
                 :
 
-                <div
+                <button
                     className={mobile ? mobileBack : back}
                     onClick={(e) => {
-                        changePhoto(e)
+                        changePhoto(e);
                     }}
-                    onTouchStart={() => {
-                        console.log("START")
-                        // mobileBack = `${styles.back} ${styles.buttonBack}`
-                    }
-                    }
-                    onTouchEnd={() => {
-                        console.log("END")
-                        // mobileBack = `${styles.back} ${styles.mobileButton}`
-                    }
-                    }
+                    onMouseUp={(e) => {
+                        e.currentTarget.blur();
+                    }}
                     id='back'
                 >
                     <ArrowBackIosNewIcon
                         fontSize='large'
                     />
-                </div>
+                </button>
             }
             <Box
                 sx={{
@@ -219,17 +212,20 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
                 :
 
-                <div
+                <button
                     className={mobile ? mobileForward : forward}
                     onClick={(e) => {
                         changePhoto(e)
+                    }}
+                    onMouseUp={(e) => {
+                        e.currentTarget.blur();
                     }}
                     id='forward'
                 >
                     <ArrowForwardIosIcon
                         fontSize='large'
                     />
-                </div>
+                </button>
             }
         </>
     )
