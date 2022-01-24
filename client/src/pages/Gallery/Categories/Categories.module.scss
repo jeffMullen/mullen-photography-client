@@ -4,6 +4,17 @@
     &:hover {
         cursor: pointer;
     }
+    &:hover::after {
+        width: 75%;
+    }
+    &::after {
+        margin-top: -8px;
+        content: '';
+        display: block;
+        width: 0;
+        border-bottom: 1px solid black;
+        transition: width .2s ease;
+    }
 }
 
 .current {
