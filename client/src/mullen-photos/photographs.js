@@ -1,4 +1,3 @@
-import portland from './portland.jpeg';
 import berryPortrait from './berries-portrait-downsize.jpeg';
 import sedona from './sedona.jpeg';
 import sunset from './sunset.jpeg';
@@ -23,15 +22,25 @@ import greenAndPurple from './green-purple.jpeg';
 import magnolia from './magnolia.jpeg';
 import trillium from './trillium.jpeg';
 import fairyHome from './fairy-home.jpeg';
+import rose from './rose.jpeg';
+import hurricaneRidge from './hurricane-ridge.jpeg';
+import barnacles from './barnacles.jpeg';
+import seeds from './seeds.jpeg';
+import paintedHills from './painted-hills.jpeg';
+import unchained from './unchained.jpeg';
+import opalCreek from './opal-creek.jpeg';
+import blue from './blue.jpeg';
+import illinoisRiver from './illinois-river.jpeg';
+import mushroomLayers from './mushroom-layers.jpeg';
+import illuminatedLeaves from './illuminated-leaves.jpeg';
+import waningLight from './waning-light.jpeg';
+import fire from './fire.jpeg';
+import moss from './moss.jpeg';
+import catNap from './cat-nap.jpeg';
+import inAllHerGlory from './in-all-her-glory.jpeg';
+import timeless from './timeless.jpeg';
 
 const imageData = [
-    {
-        img: portland,
-        photographer: 'Jeff Mullen',
-        title: 'Portland',
-        description: "Al's Den in downtown Portland",
-        category: 'Urban'
-    },
     {
         img: berryPortrait,
         photographer: 'Jeff Mullen',
@@ -173,57 +182,112 @@ const imageData = [
         category: 'Landscape'
     },
     {
+        img: rose,
+        photographer: 'Jeff Mullen',
+        title: 'Rose',
+        category: 'Landscape'
+    },
+    {
+        img: hurricaneRidge,
+        photographer: 'Jeff Mullen',
+        title: 'Hurricane Ridge',
+        category: 'Landscape'
+    },
+    {
+        img: barnacles,
+        photographer: 'Jeff Mullen',
+        title: 'Barnacles',
+        category: 'Landscape'
+    },
+    {
+        img: seeds,
+        photographer: 'Jeff Mullen',
+        title: 'Seeds',
+        category: 'Landscape'
+    },
+    {
+        img: paintedHills,
+        photographer: 'Jeff Mullen',
+        title: 'The Painted Hills',
+        category: 'Landscape'
+    },
+    {
+        img: unchained,
+        photographer: 'Jeff Mullen',
+        title: 'Unchained',
+        category: 'Urban'
+    },
+    {
+        img: opalCreek,
+        photographer: 'Jeff Mullen',
+        title: 'Opal Creek',
+        category: 'Landscape'
+    },
+    {
+        img: blue,
+        photographer: 'Jeff Mullen',
+        title: 'Blue',
+        category: 'Landscape'
+    },
+    {
+        img: illinoisRiver,
+        photographer: 'Jeff Mullen',
+        title: 'Illinois River',
+        category: 'Landscape'
+    },
+    {
+        img: mushroomLayers,
+        photographer: 'Jeff Mullen',
+        title: 'Mushroom Layers',
+        category: 'Landscape'
+    },
+    {
+        img: illuminatedLeaves,
+        photographer: 'Jeff Mullen',
+        title: 'Illuminated Leaves',
+        category: 'Landscape'
+    },
+    {
+        img: waningLight,
+        photographer: 'Jeff Mullen',
+        title: 'Waning Light',
+        category: 'Landscape'
+    },
+    {
+        img: fire,
+        photographer: 'Jeff Mullen',
+        title: 'Fire',
+        category: 'Landscape'
+    },
+    {
+        img: moss,
+        photographer: 'Jeff Mullen',
+        title: 'Moss',
+        category: 'Landscape'
+    },
+    {
+        img: catNap,
+        photographer: 'Jeff Mullen',
+        title: 'Cat Nap',
+        category: 'Landscape'
+    },
+    {
+        img: inAllHerGlory,
+        photographer: 'Jeff Mullen',
+        title: 'In All Her Glory',
+        category: 'Urban'
+    },
+    {
+        img: timeless,
+        photographer: 'Jeff Mullen',
+        title: 'Timeless',
+        category: 'Landscape'
+    },
+    {
         img: sedona,
         photographer: 'Jeff Mullen',
         title: 'Sedona',
         category: 'Landscape'
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-        title: 'Burger',
-        category: 'Landscape'
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-        title: 'Camera',
-        category: 'Landscape'
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-        title: 'Coffee',
-        category: 'Urban'
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-        title: 'Hats',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-        title: 'Honey',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-        title: 'Basketball',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-        title: 'Fern',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-        title: 'Mushrooms',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-        title: 'Tomato basil',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-        title: 'Sea star',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-        title: 'Bike',
     },
 ];
 
