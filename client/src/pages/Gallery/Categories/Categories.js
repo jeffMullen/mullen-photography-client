@@ -40,29 +40,31 @@ function Categories() {
                 {['All', 'Landscape', 'Urban', 'Abstract'].map(category =>
                     category === currentCategory ?
 
-                    <Typography key={category}
-                        variant='overline'
-                        component='h3'
-                        className={styles.current}
-                        sx={{
-                            fontSize: '1rem',
-                        }}
-                        onClick={(e) =>
-                            setCategoryFilter(e)}
-                    >{category}</Typography>
+                        // The Current Category gets the underline style to denote the current filter
+                        <Typography key={category}
+                            variant='overline'
+                            component='h3'
+                            className={styles.current}
+                            sx={{
+                                fontSize: '1rem',
+                            }}
+                            onClick={(e) =>
+                                setCategoryFilter(e)}
+                        >{category}</Typography>
 
-                    :
+                        :
 
-                    <Typography key={category}
-                        variant='overline'
-                        component='h3'
-                        className={styles.category}
-                        sx={{
-                            fontSize: '1rem'
-                        }}
-                        onClick={(e) =>
-                            setCategoryFilter(e)}
-                    >{category}</Typography>
+                        // All other category filters have no underline text decoration
+                        <Typography key={category}
+                            variant='overline'
+                            component='h3'
+                            className={styles.category}
+                            sx={{
+                                fontSize: '1rem'
+                            }}
+                            onClick={(e) =>
+                                setCategoryFilter(e)}
+                        >{category}</Typography>
                 )}
             </Box>
 

@@ -35,7 +35,9 @@ function About() {
                 </Typography>
                 <Container
                     sx={{
-                        display: 'flex',
+                        margin: '3rem 0 4rem 0',
+                        padding: '0'
+                        // display: 'flex',
                     }}
                 >
                     <Bio />
