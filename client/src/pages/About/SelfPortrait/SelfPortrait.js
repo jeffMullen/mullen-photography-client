@@ -11,10 +11,17 @@ function SelfPortrait() {
         <>
             <Container
                 sx={{
-                    // width: '310px',
-                    margin: '4rem 0 4rem 0',
+                    margin: '4rem 0 2rem 0',
                     overflow: 'hidden',
-                    padding: '0',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    padding: {
+                        xs: '0',
+                        sm: '0',
+                        md: '0',
+                        lg: '0',
+                        xl: '0',
+                },
                 }}
             >
                 <img

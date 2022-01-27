@@ -17,6 +17,9 @@ function About() {
                         xs: '6rem',
                         lg: '9rem'
                     },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                 }}
             >
                 {/* Page Heading */}
@@ -35,9 +38,8 @@ function About() {
                 </Typography>
                 <Container
                     sx={{
-                        margin: '3rem 0 4rem 0',
-                        padding: '0'
-                        // display: 'flex',
+                        margin: '3rem 0 0 0',
+                        padding: '0',
                     }}
                 >
                     <Bio />

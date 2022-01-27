@@ -1,5 +1,67 @@
 .portrait {
     object-fit: contain;
     width: 900px;
-    margin-left: -375px;
+    margin-left: -225px;
+    padding: 0;
+}
+
+@media screen and (min-width: 430px) {
+    .portrait {
+        margin-left: -175px;
+    }
+}
+
+@media screen and (min-width: 530px) {
+    .portrait {
+        margin-left: -275px;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .portrait {
+        margin-left: -215px;
+    }
+}
+
+@media screen and (min-width: 760px) {
+    .portrait {
+        margin-left: -125px;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .portrait {
+        margin-left: -100px;
+    }
+}
+
+@media screen and (min-width: 875px) {
+    .portrait {
+        margin-left: -75px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .portrait {
+        margin-left: -50px;
+    }
+}
+
+@media screen and (min-width: 925px) {
+    .portrait {
+        margin-left: -25px;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .portrait {
+        margin-left: 0px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .portrait {
+        padding: 10px;
+        border: 2px solid rgb(75, 75, 75);
+    }
 }

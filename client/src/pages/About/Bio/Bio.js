@@ -8,7 +8,7 @@ function Bio() {
         <>
             <Container
                 sx={{
-                    width: { md: '50%' },
+                    width: { lg: '50%' },
                     padding: '0 30px 0 30px'
                 }}
             >
