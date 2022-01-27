@@ -108,6 +108,7 @@ function ImageGrid() {
     return (
         <Box>
             {columnCount === 1 ?
+                //  At 1 column:: Set a max width to the paper component to constrain image display size
                 <Paper
                     sx={{
                         maxWidth: '600px',
@@ -115,6 +116,7 @@ function ImageGrid() {
                     }}
                 >
                     <ImageList
+                        rowHeight={300}
                         cols={columnCount}
                         gap={8}>
                         {filteredImages.map((item) => {
@@ -129,19 +131,19 @@ function ImageGrid() {
 
                 :
 
-                <Paper>
-                    <ImageList
-                        cols={columnCount}
-                        gap={8}>
-                        {filteredImages.map((item) => {
-                            return <SinglePhoto
-                                key={item.img}
-                                item={item}
-                                routeToPhoto={routeToPhoto}
-                            />
-                        })}
-                    </ImageList>
-                </Paper>
+                // Otherwise:: No set paper width
+                <ImageList
+                    rowHeight={300}
+                    cols={columnCount}
+                    gap={8}>
+                    {filteredImages.map((item) => {
+                        return <SinglePhoto
+                            key={item.img}
+                            item={item}
+                            routeToPhoto={routeToPhoto}
+                        />
+                    })}
+                </ImageList>
             }
 
             {/* Modal displaying image appears when images are clicked */}
