@@ -7,7 +7,6 @@ import styles from './ImageModal.module.scss';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import CloseIcon from '@mui/icons-material/Close';
-import CancelIcon from '@mui/icons-material/Cancel';
 
 
 function ImageModal({ filteredImages, orientation, handleClose, vw }) {
