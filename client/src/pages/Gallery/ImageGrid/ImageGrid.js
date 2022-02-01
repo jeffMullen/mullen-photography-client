@@ -70,6 +70,9 @@ function ImageGrid() {
 
     // Check which orientation a mobile phone is in and display accordingly
     useEffect(() => {
+        console.log("EVENT LISTENER", orientation)
+
+
         if (orientation === 'portrait') {
             setColumnCount(1);
         } else if (orientation === 'landscape') {
@@ -92,19 +95,15 @@ function ImageGrid() {
         }
     }, [orientation, vw, imgArrLength, category]);
 
-    useEffect(() => {
-        // setOrientation(media === true ? 'landscape' : 'portrait')
-        console.log(orientation)
-    }, [media, orientation])
 
     // Listen for a change in mobile orientation
-    window.addEventListener('orientationchange', (e) => {
-        setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
-        setMedia(window.matchMedia("(orientation: landscape)").matches)
-        // setOrientation(media === true ? 'landscape' : 'portrait');
-        // console.log('Orientation Change:', orientation)
-        // setOrientation(window.screen.orientation.type.split('-')[0]);
-    });
+    useEffect(() => {
+        window.addEventListener('orientationchange', (e) => {
+            console.log('ORIENTATION CHANGE ENTERED')
+            setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
+            setOrientation(orientation === 'portrait' ? 'landscape' : 'portrait');
+        });
+    })
 
 
 
