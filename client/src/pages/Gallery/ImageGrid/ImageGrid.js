@@ -39,7 +39,19 @@ function ImageGrid() {
 
     // ORIENTATION, VIEW WIDTHS, and COLUMN COUNT state
     // const [orientation, setOrientation] = useState(window.orientation);
-    const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0] || window.orientation);
+    // console.log(window.matchMedia("(orientation: landscape)"))
+
+    const [media, setMedia] = useState(window.matchMedia("(orientation: landscape)").matches);
+    console.log(media);
+
+    // IF STATEMENTS TO DETERMINE WHAT BROWSER IT IS.  SET ORIENTATION STATE BY THE METHOD OF EACH BROWSER
+    console.log(window.navigator.userAgent)
+
+    // const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0] || window.orientation);
+    const [orientation, setOrientation] = useState(media === true ? 'landscape' : 'portrait');
+    console.log('orientation', orientation)
+    // const [orientation, setOrientation] = useState(window.screen.orientation.type.split('-')[0] || (media ? 'landscape' : 'portrait'));
+    // console.log('orientation', orientation)
     const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
     const [columnCount, setColumnCount] = useState(vw < 600 ? (vw < 500 ? 1 : 2) : 3);
 
@@ -58,6 +70,9 @@ function ImageGrid() {
 
     // Check which orientation a mobile phone is in and display accordingly
     useEffect(() => {
+        console.log("EVENT LISTENER", orientation)
+
+
         if (orientation === 'portrait') {
             setColumnCount(1);
         } else if (orientation === 'landscape') {
@@ -80,11 +95,15 @@ function ImageGrid() {
         }
     }, [orientation, vw, imgArrLength, category]);
 
+
     // Listen for a change in mobile orientation
-    window.addEventListener('orientationchange', (e) => {
-        setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
-        setOrientation(window.screen.orientation.type.split('-')[0]);
-    });
+    useEffect(() => {
+        window.addEventListener('orientationchange', (e) => {
+            console.log('ORIENTATION CHANGE ENTERED')
+            setVw(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
+            setOrientation(orientation === 'portrait' ? 'landscape' : 'portrait');
+        });
+    })
 
 
 
