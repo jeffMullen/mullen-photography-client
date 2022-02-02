@@ -12,6 +12,8 @@ import CloseIcon from '@mui/icons-material/Close';
 function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     const [state, dispatch] = useStoreContext();
 
+    console.log(window.navigator.userAgent)
+
     let statePhoto = state.photo;
 
     const [photo, setPhoto] = useState(statePhoto);
@@ -123,7 +125,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 sx={{
                     position: 'relative',
                     height: '95%',
-                    bgcolor: 'rgba(0, 0, 0, 0.5)',
+                    // bgcolor: 'rgba(0, 0, 0, 0.5)',
                     outline: 'none',
                     p: {
                         xs: 0,

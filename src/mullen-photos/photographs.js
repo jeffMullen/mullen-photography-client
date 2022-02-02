@@ -45,14 +45,12 @@ const imageData = [
         img: berryPortrait,
         photographer: 'Jeff Mullen',
         title: 'Berries',
-        description: "Ankeny street berries",
         category: 'Landscape'
     },
     {
         img: sunset,
         photographer: 'Jeff Mullen',
         title: 'Sunset',
-        description: 'Cannon Beach - Oregon',
         category: 'Landscape'
     },
     {

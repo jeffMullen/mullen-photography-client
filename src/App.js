@@ -20,9 +20,7 @@ function App() {
       <StoreProvider>
         <ThemeProvider theme={theme}>
             <div className="App">
-              {/* <header className="App-header"> */}
                 <Header />
-              {/* </header> */}
               <main>
                 <Switch>
                   <Route exact path="/" component={Home} />
