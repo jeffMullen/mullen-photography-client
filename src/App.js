@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import CssBaseLine from '@mui/material/CssBaseline';
 import './scss/styles.scss';
 import Home from './pages/Home/Home';
@@ -19,7 +19,6 @@ function App() {
       <CssBaseLine />
       <StoreProvider>
         <ThemeProvider theme={theme}>
-          <Router>
             <div className="App">
               {/* <header className="App-header"> */}
                 <Header />
@@ -32,7 +31,6 @@ function App() {
                 </Switch>
               </main>
             </div>
-          </Router>
         </ThemeProvider>
       </StoreProvider>
     </>

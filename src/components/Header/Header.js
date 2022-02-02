@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Link from '@mui/material/Link';
+import Link from 'react-router-dom/Link';
 import Box from '@mui/material/Box';
 
 // AppBar imports
@@ -44,7 +44,7 @@ function NavDrawer(theme) {
         >
             <List>
                 <Link
-                    href={`/`}
+                    to={`/`}
                     color="inherit"
                     underline="none"
                 >
@@ -66,7 +66,7 @@ function NavDrawer(theme) {
                 {['About', 'Gallery'].map((text, index) => (
                     <Link
                         key={text}
-                        href={`/${text}`}
+                        to={`/${text}`}
                         color="inherit"
                         underline="none"
                     >
