@@ -156,7 +156,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 }
 
                 {/* Photo information */}
-                <div
+                {/* <div
                     className={styles.dimensions}
                 >
                     <div
@@ -196,7 +196,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                             {photo.description}
                         </Typography>
                     </div>
-                </div>
+                </div> */}
             </Box>
 
             {/* FORWARD CYCLE BUTTON */}
