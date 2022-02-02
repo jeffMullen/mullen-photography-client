@@ -45,8 +45,7 @@ function NavDrawer(theme) {
             <List>
                 <Link
                     to={`/`}
-                    color="inherit"
-                    underline="none"
+                    className={styles.link}
                 >
                     <ListItem
                         button
@@ -67,13 +66,11 @@ function NavDrawer(theme) {
                     <Link
                         key={text}
                         to={`/${text}`}
-                        color="inherit"
-                        underline="none"
+                        className={styles.link}
                     >
                         <ListItem
                             button
                             key={text}
-                        // className={styles.listItemText}
                         >
 
                             <ListItemText
