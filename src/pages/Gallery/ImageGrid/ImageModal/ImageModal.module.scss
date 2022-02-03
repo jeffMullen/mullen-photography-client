@@ -1,6 +1,17 @@
+// MODAL WRAPPER
+.modalWrapper {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
 // MODAL CLOSE BUTTON
 .close {
-    position: absolute;
+    // position: absolute;
+    align-self: flex-end;
     z-index: 50;
     top: -85%;
     right: 5%;
@@ -20,10 +31,17 @@
 }
 
 // IMAGE
-.dimensions {
-    // height: 100%;
-    // width: 100%;
+.imageWrapper {
+    // max-height: 100%;
+    // max-width: 100%;
+    display: flex;
+    align-items: center;
     // object-fit: contain;
+}
+
+.dimensions {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 
@@ -88,12 +106,14 @@
 .back,
 .forward {
     position: absolute;
-    z-index: 1;
-    // top: 110%;
+    z-index: 1001;
+    // top: 150%;
     
 }
 
 .back {
+    justify-self: flex-end;
+
     left: 30%;
 }
 
@@ -102,22 +122,23 @@
 }
 
 @media screen and (orientation: portrait) {
+
     .dimensions {
         // height: 100%;
         width: 100%;
         // object-fit: contain;
     }
-    
+
     .forward,
     .back {
-        top: 110%;
+        top: 90%;
     }
 }
 
 // LANDSCAPE MOBILE STYLES
 @media screen and (orientation: landscape) {
     .dimensions {
-        height: 100%;
+        max-height: 100%;
     }
 
     .back,
@@ -127,8 +148,11 @@
     }
 
     .back {
-        left: 0;
-        margin-right: 1rem;
+        // z-index: 1000;
+        // background-color: chartreuse;
+        color: chartreuse;
+        // left: 0;
+        margin-right: auto;
         padding: .7rem .5rem .7rem .2rem;  
     }
 
@@ -178,6 +202,8 @@
 
 
 
-@media screen and (min-width: 1280px) {
-
+@media screen and (min-width: 1280px) and (orientation: landscape) {
+    .dimensions {
+        // max-height: 50%;
+    }
 }

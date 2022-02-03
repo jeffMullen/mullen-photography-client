@@ -87,76 +87,83 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
     return (
         <>
-            <button
-                className={styles.close}
-                onClick={() => handleClose()}
+            <div
+                className={styles.modalWrapper}
             >
-                <CloseIcon />
-            </button>
-            {/* If it is the first photo, disable the onClick attribute */}
-            {currentIndex === 0 ?
-                <div
-                    className={mobile ? mobileBack : back}
-                    id='back'
-                >
-                    <ArrowBackIosNewIcon
-                        fontSize='large'
-                    />
-                </div>
-
-                :
-
                 <button
-                    className={mobile ? mobileBack : back}
-                    onClick={(e) => {
-                        changePhoto(e);
-                    }}
-                    onMouseUp={(e) => {
-                        e.currentTarget.blur();
-                    }}
-                    id='back'
+                    className={styles.close}
+                    onClick={() => handleClose()}
                 >
-                    <ArrowBackIosNewIcon
-                        fontSize='large'
-                    />
+                    <CloseIcon />
                 </button>
-            }
-            <Box
-                sx={{
-                    position: 'relative',
-                    height: '95%',
-                    // bgcolor: 'rgba(0, 0, 0, 0.5)',
-                    outline: 'none',
-                    p: {
-                        xs: 0,
-                    },
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    textAlign: 'center',
-                }}
-            >
-                {/* For mobile landscape, show photo information on screen tap */}
-                {/* For desktop, show photo information on mouse enter or leave (HOVER) */}
-                {vw < 1000 ?
-                    <img src={photo.img}
-                        className={styles.dimensions}
-                        alt={`Title: ${photo.title}`}
-                        onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
-                    ></img>
+                {/* If it is the first photo, disable the onClick attribute */}
+                {currentIndex === 0 ?
+                    <div
+                        className={mobile ? mobileBack : back}
+                        id='back'
+                    >
+                        <ArrowBackIosNewIcon
+                            fontSize='large'
+                        />
+                    </div>
 
                     :
 
-                    <img src={photo.img}
-                        className={styles.dimensions}
-                        alt={`Title: ${photo.title}`}
-                        onMouseEnter={() => setIsShown(true)}
-                        onMouseLeave={() => setIsShown(false)}
-                    ></img>
+                    <button
+                        className={mobile ? mobileBack : back}
+                        onClick={(e) => {
+                            changePhoto(e);
+                        }}
+                        onMouseUp={(e) => {
+                            e.currentTarget.blur();
+                        }}
+                        id='back'
+                    >
+                        <ArrowBackIosNewIcon
+                            fontSize='large'
+                        />
+                    </button>
                 }
+                <Box
+                    sx={{
+                        position: 'relative',
+                        height: '95%',
+                        // bgcolor: 'rgba(0, 0, 0, 0.5)',
+                        outline: 'none',
+                        p: {
+                            xs: 0,
+                        },
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                    }}
+                >
+                    <div
+                        className={styles.imageWrapper}
+                    >
+                        {/* For mobile landscape, show photo information on screen tap */}
+                        {/* For desktop, show photo information on mouse enter or leave (HOVER) */}
+                        {vw < 1000 ?
+                            <img src={photo.img}
+                                className={styles.dimensions}
+                                alt={`Title: ${photo.title}`}
+                                onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
+                            ></img>
 
-                {/* Photo information */}
-                {/* <div
+                            :
+
+                            <img src={photo.img}
+                                className={styles.dimensions}
+                                alt={`Title: ${photo.title}`}
+                                onMouseEnter={() => setIsShown(true)}
+                                onMouseLeave={() => setIsShown(false)}
+                            ></img>
+                        }
+                    </div>
+
+                    {/* Photo information */}
+                    {/* <div
                     className={styles.dimensions}
                 >
                     <div
@@ -197,37 +204,38 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                         </Typography>
                     </div>
                 </div> */}
-            </Box>
+                </Box>
 
-            {/* FORWARD CYCLE BUTTON */}
-            {/* If it is the last photo, disable the onClick attribute */}
-            {currentIndex === filteredImages.length - 1 ?
-                <div
-                    className={mobile ? mobileForward : forward}
-                    id='forward'
-                >
-                    <ArrowForwardIosIcon
-                        fontSize='large'
-                    />
-                </div>
+                {/* FORWARD CYCLE BUTTON */}
+                {/* If it is the last photo, disable the onClick attribute */}
+                {currentIndex === filteredImages.length - 1 ?
+                    <div
+                        className={mobile ? mobileForward : forward}
+                        id='forward'
+                    >
+                        <ArrowForwardIosIcon
+                            fontSize='large'
+                        />
+                    </div>
 
-                :
+                    :
 
-                <button
-                    className={mobile ? mobileForward : forward}
-                    onClick={(e) => {
-                        changePhoto(e)
-                    }}
-                    onMouseUp={(e) => {
-                        e.currentTarget.blur();
-                    }}
-                    id='forward'
-                >
-                    <ArrowForwardIosIcon
-                        fontSize='large'
-                    />
-                </button>
-            }
+                    <button
+                        className={mobile ? mobileForward : forward}
+                        onClick={(e) => {
+                            changePhoto(e)
+                        }}
+                        onMouseUp={(e) => {
+                            e.currentTarget.blur();
+                        }}
+                        id='forward'
+                    >
+                        <ArrowForwardIosIcon
+                            fontSize='large'
+                        />
+                    </button>
+                }
+            </div>
         </>
     )
 };
