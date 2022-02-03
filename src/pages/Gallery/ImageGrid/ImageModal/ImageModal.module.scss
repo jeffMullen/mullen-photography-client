@@ -26,50 +26,6 @@
     // object-fit: contain;
 }
 
-@media screen and (orientation: portrait) {
-    .dimensions {
-        // height: 100%;
-        width: 100%;
-        // object-fit: contain;
-    }
-}
-
-// LANDSCAPE MOBILE STYLES
-@media screen and (orientation: landscape) {
-    .dimensions {
-        height: 100%;
-    }
-
-    .back,
-    .forward {
-        position: relative;
-        top: 0;
-    }
-
-    .back {
-        left: 0;
-        margin-right: 1rem;
-        padding: .7rem .5rem .7rem .2rem;  
-    }
-
-    .forward {
-        right: 0;
-        margin-left: 1rem;
-        padding: .7rem .2rem .7rem .5rem;
-    }
-
-    .close {
-        top: 2.5%; 
-        right: 1%;
-    }
-
-    .information {
-        top: 5%;
-        left: 30%;
-        width: 50%;
-        // margin-top: 25px;
-    }
-}
 
 // PHOTO INFORMATION POPUP STYLES
 .information,
@@ -133,7 +89,7 @@
 .forward {
     position: absolute;
     z-index: 1;
-    top: 110%;
+    // top: 110%;
     
 }
 
@@ -145,6 +101,55 @@
     right: 30%;
 }
 
+@media screen and (orientation: portrait) {
+    .dimensions {
+        // height: 100%;
+        width: 100%;
+        // object-fit: contain;
+    }
+    
+    .forward,
+    .back {
+        top: 110%;
+    }
+}
+
+// LANDSCAPE MOBILE STYLES
+@media screen and (orientation: landscape) {
+    .dimensions {
+        height: 100%;
+    }
+
+    .back,
+    .forward {
+        position: relative;
+        top: 0;
+    }
+
+    .back {
+        left: 0;
+        margin-right: 1rem;
+        padding: .7rem .5rem .7rem .2rem;  
+    }
+
+    .forward {
+        right: 0;
+        margin-left: 1rem;
+        padding: .7rem .2rem .7rem .5rem;
+    }
+
+    .close {
+        top: 2.5%; 
+        right: 1%;
+    }
+
+    .information {
+        top: 5%;
+        left: 30%;
+        width: 50%;
+        // margin-top: 25px;
+    }
+}
 
 // DISABLE CYCLE BUTTON
 .disable {
