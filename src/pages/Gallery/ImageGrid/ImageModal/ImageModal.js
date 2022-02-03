@@ -8,8 +8,14 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import CloseIcon from '@mui/icons-material/Close';
 
-
 function ImageModal({ filteredImages, orientation, handleClose, vw }) {
+
+    const [swipe, setSwipe] = useState({
+        touchStart: null,
+        touchEnd: null,
+        moved: false
+    })
+
     const [state, dispatch] = useStoreContext();
 
     console.log(window.navigator.userAgent)
@@ -66,18 +72,63 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         mobileForward = `${styles.forward} ${styles.mobileButton} ${styles.hightlight}`;
     }
 
+    const sensitivity = 150;
+
+    const handleTouchStart = (e) => {
+        let touchStartX = e.targetTouches[0].clientX;
+        setSwipe({ ...swipe, touchStart: touchStartX });
+    }
+
+    const handleTouchMove = (e) => {
+        let touchEndX = e.targetTouches[0].clientX;
+        setSwipe({ ...swipe, touchEnd: touchEndX, moved: true });
+    }
+
+    const handleTouchEnd = (e) => {
+        let amountSwiped = swipe.touchStart - swipe.touchEnd;
+        let direction;
+        if (amountSwiped > sensitivity && swipe.moved) {
+            direction = 'left';
+        } else if (amountSwiped < -sensitivity && swipe.moved) {
+            direction = 'right';
+        }
+        // else {
+        //     // setSwipe({ ...swipe, moved: false });
+        // }
+
+        changePhoto(e, direction);
+    }
+
 
     // Cycle through photos in the filteredImages array
     // When forward and back arrows are clicked
-    const changePhoto = (e) => {
-        let id = e.currentTarget.id;
+    const changePhoto = (e, direction) => {
+        if (direction === undefined && e._reactName === 'onTouchEnd') {
 
-        // if it is forward - change photo to index + 1;  if back index -1
-        if (id === 'forward') {
-            setCurrentIndex(currentIndex + 1);
-        } else {
-            setCurrentIndex(currentIndex - 1);
+            setSwipe({ touchStart: null, touchEnd: null, moved: false });
+            return;
         }
+
+        let id;
+        if (e._reactName === 'onTouchEnd') {
+            console.log('SWIPING')
+            if (direction === 'right') {
+                id = 'back';
+            } else if (direction === 'left') {
+                id = 'forward';
+            }
+        } else {
+            id = e.currentTarget.id;
+        }
+        // if it is forward - change photo to index + 1;  if back index -1
+
+        if (id === 'forward') {
+            currentIndex < filteredImages.length - 1 ? setCurrentIndex(currentIndex + 1) : setSwipe({ touchStart: null, touchEnd: null, moved: false });
+        } else {
+            currentIndex > 0 ? setCurrentIndex(currentIndex - 1) : setSwipe({ touchStart: null, touchEnd: null, moved: false });
+        }
+
+        setSwipe({ touchStart: null, touchEnd: null, moved: false });
     };
 
     // When currentIndex is changed - set the new photo
@@ -141,6 +192,9 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 >
                     <div
                         className={styles.imageWrapper}
+                        onTouchStart={(e) => handleTouchStart(e)}
+                        onTouchMove={(e) => handleTouchMove(e)}
+                        onTouchEnd={(e) => handleTouchEnd(e)}
                     >
                         {/* For mobile landscape, show photo information on screen tap */}
                         {/* For desktop, show photo information on mouse enter or leave (HOVER) */}
