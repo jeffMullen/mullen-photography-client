@@ -172,9 +172,9 @@ function ImageGrid() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 sx={{
-                    // display: 'flex',
-                    // justifyContent: 'center',
-                    // alignItems: 'center',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     background: 'rgba(0, 0, 0, .25)'
                 }}
             >
@@ -182,7 +182,7 @@ function ImageGrid() {
                     className={styles.modalBox}
                     sx={{
                         height: '100%',
-                        marginTop: '-135px',
+                        // marginTop: '-135px',
                         // position: 'relative',
                         outline: 'none',
                         display: 'flex',
