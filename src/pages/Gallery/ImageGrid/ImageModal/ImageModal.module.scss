@@ -1,6 +1,6 @@
 // MODAL WRAPPER
 .modalWrapper {
-    height: 75%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -26,12 +26,6 @@
         &:hover {
             cursor: pointer;
         }
-}
-
-// IMAGE
-.dimensions {
-    max-height: 100%;
-    max-width: 100%;
 }
 
 
@@ -112,11 +106,20 @@
 }
 
 @media screen and (orientation: portrait) {
+    // PHOTO ORIENTATION - PORTRAIT
+    .close {
+        position: absolute;
+        top: -22%;
+    }
 
-    .dimensions {
-        // height: 100%;
+    .portrait {
+        width: 90%;
+        margin-bottom: 125px;
+    }
+
+    // PHOTO ORIENTATION - LANDSCAPE
+    .landscape {
         width: 100%;
-        // object-fit: contain;
     }
 
     .forward,
@@ -129,8 +132,6 @@
 @media screen and (orientation: landscape) {
     .modalWrapper {
         height: 90%;
-        // flex-direction: row;
-        // justify-content: center;
     }
 
     .imageWrapper {
@@ -138,7 +139,11 @@
 
     }
 
-    .dimensions {
+    .portrait {
+        max-height: 100%;
+    }
+
+    .landscape {
         // max-height: 90%;
         max-width: 85%;
     }
@@ -206,7 +211,7 @@
 
 
 @media screen and (min-width: 1280px) and (orientation: landscape) {
-    .dimensions {
+    .landscape {
         // max-height: 50%;
     }
 }

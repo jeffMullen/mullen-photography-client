@@ -28,6 +28,11 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
     const [isShown, setIsShown] = useState(false);
 
+    //PHOTO ORIENTATION
+    const [photoOrientation, setPhotoOrientation] = useState('');
+
+    const [photoStyles, setPhotoStyles] = useState(``);
+
     let mobile;
 
     if (vw < 1000) {
@@ -136,6 +141,28 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         setPhoto(filteredImages[currentIndex]);
     }, [currentIndex, filteredImages])
 
+
+    //SET DIFFERENT IMAGE STYLES BASED ON PHOTO ORIENTATION
+    useEffect(() => {
+        if (photoOrientation === 'portrait') {
+            setPhotoStyles(`${styles.portrait}`)
+        } else {
+            setPhotoStyles(`${styles.landscape}`)
+        }
+    }, [photoOrientation]);
+
+    // CHECK THE DIMENSIONS OF THE IMAGE
+    const onImgLoad = ({ target: img }) => {
+        const { offsetHeight, offsetWidth } = img;
+        if (offsetHeight > offsetWidth) {
+            console.log('portrait')
+            setPhotoOrientation('portrait');
+        }
+        else {
+            setPhotoOrientation('landscape');
+        }
+    };
+
     return (
         <>
             <div
@@ -200,15 +227,17 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                         {/* For desktop, show photo information on mouse enter or leave (HOVER) */}
                         {vw < 1000 ?
                             <img src={photo.img}
-                                className={styles.dimensions}
+                                onLoad={onImgLoad}
+                                className={photoStyles}
                                 alt={`Title: ${photo.title}`}
-                                onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
+                            // onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
                             ></img>
 
                             :
 
                             <img src={photo.img}
-                                className={styles.dimensions}
+                                onLoad={onImgLoad}
+                                className={photoStyles}
                                 alt={`Title: ${photo.title}`}
                                 onMouseEnter={() => setIsShown(true)}
                                 onMouseLeave={() => setIsShown(false)}
