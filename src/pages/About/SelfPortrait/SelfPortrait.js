@@ -11,6 +11,7 @@ function SelfPortrait() {
         <>
             <Container
                 sx={{
+                    height: '585px',
                     margin: '4rem 0 2rem 0',
                     overflow: 'hidden',
                     display: 'flex',

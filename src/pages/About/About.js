@@ -42,8 +42,8 @@ function About() {
                         padding: '0',
                     }}
                 >
-                    <Bio />
-                    <SelfPortrait />
+                    <Bio />             {/* BIO OF PHOTOGRAPHER */}
+                    <SelfPortrait />    {/* IMAGE OF PHOTOGRAPHER */}
                 </Container>
             </Box>
         </>
