@@ -1,10 +1,11 @@
 .modalBox {
     transform: translateY(20%);
+    margin-top: -135px;
 }
 
 @media screen and (orientation: landscape) {
     .modalBox {
         transform: translateY(0);
-        height: 95%;
+        margin-top: 0px;
     }
 }

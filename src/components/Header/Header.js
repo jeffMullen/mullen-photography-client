@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
 // AppBar imports
@@ -107,7 +107,6 @@ function NavDrawer(theme) {
                             <div
                                 className={styles.list}>
                                 {list(anchor)}
-                                {/* <Button color="inherit">Login</Button> */}
                             </div>
                         </Drawer>
                         <IconButton

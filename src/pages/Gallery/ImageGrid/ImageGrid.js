@@ -181,7 +181,8 @@ function ImageGrid() {
                 <Box
                     className={styles.modalBox}
                     sx={{
-                        position: 'relative',
+                        height: '100%',
+                        width: '100%',
                         outline: 'none',
                         display: 'flex',
                         alignItems: 'center',

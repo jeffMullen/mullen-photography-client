@@ -1,9 +1,18 @@
+// MODAL WRAPPER
+.modalWrapper {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
 // MODAL CLOSE BUTTON
 .close {
-    position: absolute;
+    margin-right: 1rem;
+    // align-self: flex-end;
     z-index: 50;
-    top: -85%;
-    right: 5%;
     background: rgba(255, 255, 255, .3);
     color: white;
     padding: .5rem .5rem .3rem .5rem;
@@ -19,12 +28,6 @@
         }
 }
 
-// IMAGE
-.dimensions {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
 
 // PHOTO INFORMATION POPUP STYLES
 .information,
@@ -71,22 +74,6 @@
     animation-iteration-count: 1;
 }
 
-// .hightlight {
-//     &:hover {
-//         // background: rgba(16, 16, 16, 0.776);
-//         animation-name: hightlight;
-//     }
-// }
-
-// @keyframes highlight {
-//     0% { background: 
-//         rgba(0, 0, 0, 0); }
-//     50% { background: 
-//         rgba(16, 16, 16, 0.776); }
-//     100% { background:
-//         rgba(0, 0, 0, 0); }
-// }
-
 .buttonForward,
 .buttonBack {
     transition: .3s;
@@ -103,12 +90,14 @@
 .back,
 .forward {
     position: absolute;
-    z-index: 1;
-    top: 110%;
+    z-index: 1001;
+    // top: 150%;
     
 }
 
 .back {
+    justify-self: flex-end;
+
     left: 30%;
 }
 
@@ -116,55 +105,73 @@
     right: 30%;
 }
 
-
-// DISABLE CYCLE BUTTON
-.disable {
-    color: rgba(0, 0, 0, 0);
-}
-
-@media screen and (min-width: 430px) {
-    .information {
-        top: -45%;
-    }
-
+@media screen and (orientation: portrait) {
+    // PHOTO ORIENTATION - PORTRAIT
     .close {
-        top: -75%;
-    }
-}
-
-@media screen and (min-width: 530px) {
-    .information {
-        top: -35%;
+        position: absolute;
+        top: -22%;
+        right: 1%;
     }
 
-    .close {
-        top: -55%;
+    .portrait {
+        width: 90%;
+        margin-bottom: 125px;
+    }
+
+    // PHOTO ORIENTATION - LANDSCAPE
+    .landscape {
+        width: 100%;
+    }
+
+    .forward,
+    .back {
+        top: 90%;
     }
 }
 
 // LANDSCAPE MOBILE STYLES
 @media screen and (orientation: landscape) {
+    .modalWrapper {
+        height: 100%;
+    }
+
+    .imageWrapper {
+        // max-height: 100%;
+        max-width: 90%;
+    }
+
+    .portrait {
+        // max-height: 100%;
+        max-width: 45%;
+    }
+
+    .landscape {
+        max-width: 85%;
+    }
+
     .back,
     .forward {
+        display: none;
         position: relative;
         top: 0;
     }
 
     .back {
         left: 0;
-        margin-right: 1rem;
+        // margin-right: auto;
         padding: .7rem .5rem .7rem .2rem;  
     }
 
     .forward {
         right: 0;
-        margin-left: 1rem;
+        // margin-left: 1rem;
         padding: .7rem .2rem .7rem .5rem;
     }
 
     .close {
+        position: absolute;
         top: 2.5%; 
-        right: 1%;
+        right: .5%;
     }
 
     .information {
@@ -175,6 +182,54 @@
     }
 }
 
-@media screen and (min-width: 1280px) {
+// DISABLE CYCLE BUTTON
+.disable {
+    color: rgba(0, 0, 0, 0);
+}
 
+@media screen and (orientation: portrait) and (min-width: 430px) {
+    .information {
+        top: -45%;
+    }
+
+    .close {
+        top: -75%;
+    }
+}
+
+@media screen and (orientation: portrait) and (min-width: 530px) {
+    .information {
+        top: -35%;
+    }
+
+    .close {
+        top: -55%;
+    }
+}
+
+
+
+@media screen and (min-width: 1280px) and (orientation: landscape) {
+    .modalWrapper {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .back,
+    .forward {
+        display: inline-block;
+    }
+
+    .back {
+        margin-left: 1rem;
+    }
+
+    .forward {
+        margin-right: 1rem;
+    }
+
+    .imageWrapper {
+        width: 90%;
+    }
 }

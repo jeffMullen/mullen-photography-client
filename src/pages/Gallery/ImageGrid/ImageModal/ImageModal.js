@@ -7,10 +7,19 @@ import styles from './ImageModal.module.scss';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import CloseIcon from '@mui/icons-material/Close';
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function ImageModal({ filteredImages, orientation, handleClose, vw }) {
+
+    const [swipe, setSwipe] = useState({
+        touchStart: null,
+        touchEnd: null,
+        moved: false
+    })
+
     const [state, dispatch] = useStoreContext();
+
+    console.log(window.navigator.userAgent)
 
     let statePhoto = state.photo;
 
@@ -19,6 +28,11 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     const [currentIndex, setCurrentIndex] = useState(filteredImages.findIndex(index => index.img === statePhoto.img));
 
     const [isShown, setIsShown] = useState(false);
+
+    //PHOTO ORIENTATION
+    const [photoOrientation, setPhotoOrientation] = useState('');
+
+    const [photoStyles, setPhotoStyles] = useState(``);
 
     let mobile;
 
@@ -64,18 +78,63 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         mobileForward = `${styles.forward} ${styles.mobileButton} ${styles.hightlight}`;
     }
 
+    const sensitivity = 150;
+
+    const handleTouchStart = (e) => {
+        let touchStartX = e.targetTouches[0].clientX;
+        setSwipe({ ...swipe, touchStart: touchStartX });
+    }
+
+    const handleTouchMove = (e) => {
+        let touchEndX = e.targetTouches[0].clientX;
+        setSwipe({ ...swipe, touchEnd: touchEndX, moved: true });
+    }
+
+    const handleTouchEnd = (e) => {
+        let amountSwiped = swipe.touchStart - swipe.touchEnd;
+        let direction;
+        if (amountSwiped > sensitivity && swipe.moved) {
+            direction = 'left';
+        } else if (amountSwiped < -sensitivity && swipe.moved) {
+            direction = 'right';
+        }
+        // else {
+        //     // setSwipe({ ...swipe, moved: false });
+        // }
+
+        changePhoto(e, direction);
+    }
+
 
     // Cycle through photos in the filteredImages array
     // When forward and back arrows are clicked
-    const changePhoto = (e) => {
-        let id = e.currentTarget.id;
+    const changePhoto = (e, direction) => {
+        if (direction === undefined && e._reactName === 'onTouchEnd') {
 
-        // if it is forward - change photo to index + 1;  if back index -1
-        if (id === 'forward') {
-            setCurrentIndex(currentIndex + 1);
-        } else {
-            setCurrentIndex(currentIndex - 1);
+            setSwipe({ touchStart: null, touchEnd: null, moved: false });
+            return;
         }
+
+        let id;
+        if (e._reactName === 'onTouchEnd') {
+            console.log('SWIPING')
+            if (direction === 'right') {
+                id = 'back';
+            } else if (direction === 'left') {
+                id = 'forward';
+            }
+        } else {
+            id = e.currentTarget.id;
+        }
+        // if it is forward - change photo to index + 1;  if back index -1
+
+        if (id === 'forward') {
+            currentIndex < filteredImages.length - 1 ? setCurrentIndex(currentIndex + 1) : setSwipe({ touchStart: null, touchEnd: null, moved: false });
+        } else {
+            currentIndex > 0 ? setCurrentIndex(currentIndex - 1) : setSwipe({ touchStart: null, touchEnd: null, moved: false });
+        }
+
+        setSwipe({ touchStart: null, touchEnd: null, moved: false });
     };
 
     // When currentIndex is changed - set the new photo
@@ -83,78 +142,113 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         setPhoto(filteredImages[currentIndex]);
     }, [currentIndex, filteredImages])
 
+
+    //SET DIFFERENT IMAGE STYLES BASED ON PHOTO ORIENTATION
+    useEffect(() => {
+        if (photoOrientation === 'portrait') {
+            setPhotoStyles(`${styles.portrait}`)
+        } else {
+            setPhotoStyles(`${styles.landscape}`)
+        }
+    }, [photoOrientation]);
+
+    // CHECK THE DIMENSIONS OF THE IMAGE
+    const onImgLoad = ({ target: img }) => {
+        const { offsetHeight, offsetWidth } = img;
+        if (offsetHeight > offsetWidth) {
+            console.log('portrait')
+            setPhotoOrientation('portrait');
+        }
+        else {
+            setPhotoOrientation('landscape');
+        }
+    };
+
     return (
         <>
-            <button
-                className={styles.close}
-                onClick={() => handleClose()}
+            <div
+                className={styles.modalWrapper}
             >
-                <CloseIcon />
-            </button>
-            {/* If it is the first photo, disable the onClick attribute */}
-            {currentIndex === 0 ?
-                <div
-                    className={mobile ? mobileBack : back}
-                    id='back'
-                >
-                    <ArrowBackIosNewIcon
-                        fontSize='large'
-                    />
-                </div>
-
-                :
-
                 <button
-                    className={mobile ? mobileBack : back}
-                    onClick={(e) => {
-                        changePhoto(e);
-                    }}
-                    onMouseUp={(e) => {
-                        e.currentTarget.blur();
-                    }}
-                    id='back'
+                    className={styles.close}
+                    onClick={() => handleClose()}
                 >
-                    <ArrowBackIosNewIcon
-                        fontSize='large'
-                    />
+                    <CloseIcon />
                 </button>
-            }
-            <Box
-                sx={{
-                    position: 'relative',
-                    height: '95%',
-                    bgcolor: 'rgba(0, 0, 0, 0.5)',
-                    outline: 'none',
-                    p: {
-                        xs: 0,
-                    },
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    textAlign: 'center',
-                }}
-            >
-                {/* For mobile landscape, show photo information on screen tap */}
-                {/* For desktop, show photo information on mouse enter or leave (HOVER) */}
-                {vw < 1000 ?
-                    <img src={photo.img}
-                        className={styles.dimensions}
-                        alt={`Title: ${photo.title}`}
-                        onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
-                    ></img>
+                {/* If it is the first photo, disable the onClick attribute */}
+                {currentIndex === 0 ?
+                    <div
+                        className={mobile ? mobileBack : back}
+                        id='back'
+                    >
+                        <ArrowBackIosNewIcon
+                            fontSize='large'
+                        />
+                    </div>
 
                     :
 
-                    <img src={photo.img}
-                        className={styles.dimensions}
-                        alt={`Title: ${photo.title}`}
-                        onMouseEnter={() => setIsShown(true)}
-                        onMouseLeave={() => setIsShown(false)}
-                    ></img>
+                    <button
+                        className={mobile ? mobileBack : back}
+                        onClick={(e) => {
+                            changePhoto(e);
+                        }}
+                        onMouseUp={(e) => {
+                            e.currentTarget.blur();
+                        }}
+                        id='back'
+                    >
+                        <ArrowBackIosNewIcon
+                            fontSize='large'
+                        />
+                    </button>
                 }
+                <Box
+                    sx={{
+                        position: 'relative',
+                        height: '95%',
+                        width: {lg: '90%'},
+                        // bgcolor: 'rgba(0, 0, 0, 0.5)',
+                        outline: 'none',
+                        p: {
+                            xs: 0,
+                        },
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                    }}
+                >
+                    <div
+                        className={styles.imageWrapper}
+                        onTouchStart={(e) => handleTouchStart(e)}
+                        onTouchMove={(e) => handleTouchMove(e)}
+                        onTouchEnd={(e) => handleTouchEnd(e)}
+                    >
+                        {/* For mobile landscape, show photo information on screen tap */}
+                        {/* For desktop, show photo information on mouse enter or leave (HOVER) */}
+                        {vw < 1000 ?
+                            <img src={photo.img}
+                                onLoad={onImgLoad}
+                                className={photoStyles}
+                                alt={`Title: ${photo.title}`}
+                                onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
+                            ></img>
 
-                {/* Photo information */}
-                <div
+                            :
+
+                            <img src={photo.img}
+                                onLoad={onImgLoad}
+                                className={photoStyles}
+                                alt={`Title: ${photo.title}`}
+                                onMouseEnter={() => setIsShown(true)}
+                                onMouseLeave={() => setIsShown(false)}
+                            ></img>
+                        }
+                    </div>
+
+                    {/* Photo information */}
+                    {/* <div
                     className={styles.dimensions}
                 >
                     <div
@@ -194,38 +288,39 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                             {photo.description}
                         </Typography>
                     </div>
-                </div>
-            </Box>
+                </div> */}
+                </Box>
 
-            {/* FORWARD CYCLE BUTTON */}
-            {/* If it is the last photo, disable the onClick attribute */}
-            {currentIndex === filteredImages.length - 1 ?
-                <div
-                    className={mobile ? mobileForward : forward}
-                    id='forward'
-                >
-                    <ArrowForwardIosIcon
-                        fontSize='large'
-                    />
-                </div>
+                {/* FORWARD CYCLE BUTTON */}
+                {/* If it is the last photo, disable the onClick attribute */}
+                {currentIndex === filteredImages.length - 1 ?
+                    <div
+                        className={mobile ? mobileForward : forward}
+                        id='forward'
+                    >
+                        <ArrowForwardIosIcon
+                            fontSize='large'
+                        />
+                    </div>
 
-                :
+                    :
 
-                <button
-                    className={mobile ? mobileForward : forward}
-                    onClick={(e) => {
-                        changePhoto(e)
-                    }}
-                    onMouseUp={(e) => {
-                        e.currentTarget.blur();
-                    }}
-                    id='forward'
-                >
-                    <ArrowForwardIosIcon
-                        fontSize='large'
-                    />
-                </button>
-            }
+                    <button
+                        className={mobile ? mobileForward : forward}
+                        onClick={(e) => {
+                            changePhoto(e)
+                        }}
+                        onMouseUp={(e) => {
+                            e.currentTarget.blur();
+                        }}
+                        id='forward'
+                    >
+                        <ArrowForwardIosIcon
+                            fontSize='large'
+                        />
+                    </button>
+                }
+            </div>
         </>
     )
 };
