@@ -11,7 +11,7 @@
 // MODAL CLOSE BUTTON
 .close {
     margin-right: 1rem;
-    align-self: flex-end;
+    // align-self: flex-end;
     z-index: 50;
     background: rgba(255, 255, 255, .3);
     color: white;
@@ -110,6 +110,7 @@
     .close {
         position: absolute;
         top: -22%;
+        right: 1%;
     }
 
     .portrait {
@@ -135,10 +136,12 @@
     }
 
     .imageWrapper {
+        // max-height: 100%;
         max-width: 90%;
     }
 
     .portrait {
+        // max-height: 100%;
         max-width: 45%;
     }
 
@@ -151,26 +154,25 @@
         display: none;
         position: relative;
         top: 0;
+        color: chartreuse;
     }
 
     .back {
-        // z-index: 1000;
-        // background-color: chartreuse;
-        color: chartreuse;
-        // left: 0;
-        margin-right: auto;
+        left: 0;
+        // margin-right: auto;
         padding: .7rem .5rem .7rem .2rem;  
     }
 
     .forward {
         right: 0;
-        margin-left: 1rem;
+        // margin-left: 1rem;
         padding: .7rem .2rem .7rem .5rem;
     }
 
     .close {
+        position: absolute;
         top: 2.5%; 
-        right: 1%;
+        right: .5%;
     }
 
     .information {
@@ -186,7 +188,7 @@
     color: rgba(0, 0, 0, 0);
 }
 
-@media screen and (min-width: 430px) {
+@media screen and (orientation: portrait) and (min-width: 430px) {
     .information {
         top: -45%;
     }
@@ -196,7 +198,7 @@
     }
 }
 
-@media screen and (min-width: 530px) {
+@media screen and (orientation: portrait) and (min-width: 530px) {
     .information {
         top: -35%;
     }
@@ -209,6 +211,16 @@
 
 
 @media screen and (min-width: 1280px) and (orientation: landscape) {
+    .modalWrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .back,
+    .forward {
+        display: inline-block;
+    }
+
     .landscape {
         // max-height: 50%;
     }
