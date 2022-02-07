@@ -164,10 +164,6 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         }
     };
 
-    // const matches = useMediaQuery('(orientation: landscape)');
-
-    // console.log(matches)
-
     return (
         <>
             <div

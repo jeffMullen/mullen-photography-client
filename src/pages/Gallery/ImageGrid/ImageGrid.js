@@ -183,8 +183,6 @@ function ImageGrid() {
                     sx={{
                         height: '100%',
                         width: '100%',
-                        // marginTop: '-135px',
-                        // position: 'relative',
                         outline: 'none',
                         display: 'flex',
                         alignItems: 'center',
