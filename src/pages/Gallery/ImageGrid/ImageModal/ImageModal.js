@@ -7,6 +7,7 @@ import styles from './ImageModal.module.scss';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import CloseIcon from '@mui/icons-material/Close';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
@@ -163,6 +164,10 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         }
     };
 
+    // const matches = useMediaQuery('(orientation: landscape)');
+
+    // console.log(matches)
+
     return (
         <>
             <div
@@ -230,7 +235,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                                 onLoad={onImgLoad}
                                 className={photoStyles}
                                 alt={`Title: ${photo.title}`}
-                            // onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
+                                onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
                             ></img>
 
                             :
