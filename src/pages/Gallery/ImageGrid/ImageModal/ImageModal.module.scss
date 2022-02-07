@@ -154,7 +154,6 @@
         display: none;
         position: relative;
         top: 0;
-        color: chartreuse;
     }
 
     .back {
@@ -230,7 +229,7 @@
         margin-right: 1rem;
     }
 
-    .landscape {
-        // max-height: 50%;
+    .imageWrapper {
+        width: 90%;
     }
 }

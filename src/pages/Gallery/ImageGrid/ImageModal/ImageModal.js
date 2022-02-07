@@ -207,6 +207,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                     sx={{
                         position: 'relative',
                         height: '95%',
+                        width: {lg: '90%'},
                         // bgcolor: 'rgba(0, 0, 0, 0.5)',
                         outline: 'none',
                         p: {
