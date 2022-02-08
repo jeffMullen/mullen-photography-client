@@ -8,12 +8,12 @@
     position: relative;
 }
 
-// MODAL CLOSE BUTTON
+// MODAL CLOSE BUTTON // MODAL INFO BUTTON
+.infoButton,
 .close {
+    position: absolute;
     margin-right: 1rem;
-    // align-self: flex-end;
     z-index: 50;
-    background: rgba(255, 255, 255, .3);
     color: white;
     padding: .5rem .5rem .3rem .5rem;
     outline: none;
@@ -26,6 +26,11 @@
         &:hover {
             cursor: pointer;
         }
+}
+
+.close,
+.infoButton {
+    background: rgba(0, 0, 0, 0);
 }
 
 
@@ -110,8 +115,12 @@
 @media screen and (orientation: portrait) {
     // PHOTO ORIENTATION - PORTRAIT
     .close {
-        position: absolute;
         top: -22%;
+        right: 1%;
+    }
+
+    .infoButton {
+        top: -12%;
         right: 1%;
     }
 
@@ -134,11 +143,14 @@
 // LANDSCAPE MOBILE STYLES
 @media screen and (orientation: landscape) {
     .modalWrapper {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
         height: 100%;
     }
 
     .imageWrapper {
-        max-width: 90%;
+        max-width: 100%;
     }
 
     .portrait {
@@ -151,7 +163,7 @@
 
     .back,
     .forward {
-        display: none;
+        display: inline-block;
         position: relative;
         top: 0;
     }
@@ -167,21 +179,25 @@
     }
 
     .close {
-        position: absolute;
         top: 2.5%; 
+        right: .5%;
+    }
+
+    .infoButton {
+        top: 20%; 
         right: .5%;
     }
 
     .portraitInformation {
         top: 5%;
         left: 50%;
-        width: 30%;
+        width: 40%;
     }
     
     .landscapeInformation {
-        top: 15%;
-        left: 30%;
-        width: 30%;
+        top: 10%;
+        left: 50%;
+        width: 50%;
     }
 }
 
@@ -212,14 +228,20 @@
     }
 }
 
-
+@media screen and (min-width: 1150px) {
+    .landscapeInformation,
+    .portraitInformation {
+        width: 30%;
+    }
+    
+}
 
 @media screen and (min-width: 1280px) and (orientation: landscape) {
-    .modalWrapper {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+    // .modalWrapper {
+    //     width: 100%;
+    //     flex-direction: row;
+    //     justify-content: space-between;
+    // }
 
     .back,
     .forward {
@@ -237,6 +259,10 @@
     .imageWrapper {
         width: 90%;
     }
+    
+    .infoButton {
+        top: 10%;
+    }
 }
 
 @media screen and (min-width: 1500px) and (orientation: landscape) {
@@ -248,5 +274,9 @@
     .landscapeInformation {
         top: 15%;
         left: 35%;
+    }
+
+    .infoButton {
+        top: 7%;
     }
 }

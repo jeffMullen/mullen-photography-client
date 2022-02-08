@@ -7,6 +7,7 @@ import styles from './ImageModal.module.scss';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import CloseIcon from '@mui/icons-material/Close';
+import InfoIcon from '@mui/icons-material/Info';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 function ImageModal({ filteredImages, orientation, handleClose, vw }) {
@@ -18,8 +19,6 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     })
 
     const [state, dispatch] = useStoreContext();
-
-    console.log(window.navigator.userAgent)
 
     let statePhoto = state.photo;
 
@@ -81,7 +80,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         mobileForward = `${styles.forward} ${styles.mobileButton} ${styles.hightlight}`;
     }
 
-    const sensitivity = 150;
+    const sensitivity = 125;
 
     const handleTouchStart = (e) => {
         let touchStartX = e.targetTouches[0].clientX;
@@ -101,9 +100,6 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         } else if (amountSwiped < -sensitivity && swipe.moved) {
             direction = 'right';
         }
-        // else {
-        //     // setSwipe({ ...swipe, moved: false });
-        // }
 
         changePhoto(e, direction);
     }
@@ -129,7 +125,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
         } else {
             id = e.currentTarget.id;
         }
-        // if it is forward - change photo to index + 1;  if back index -1
+        // if id is forward - change photo to index + 1;  if back index -1
 
         if (id === 'forward') {
             currentIndex < filteredImages.length - 1 ? setCurrentIndex(currentIndex + 1) : setSwipe({ touchStart: null, touchEnd: null, moved: false });
@@ -181,6 +177,12 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 >
                     <CloseIcon />
                 </button>
+                <button
+                    className={styles.infoButton}
+                    onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
+                >
+                    <InfoIcon />
+                </button>
                 {/* If it is the first photo, disable the onClick attribute */}
                 {currentIndex === 0 ?
                     <div
@@ -208,13 +210,13 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                             fontSize='large'
                         />
                     </button>
+
                 }
                 <Box
                     sx={{
                         position: 'relative',
                         height: '95%',
                         width: { lg: '90%' },
-                        // bgcolor: 'rgba(0, 0, 0, 0.5)',
                         outline: 'none',
                         p: {
                             xs: 0,
@@ -238,7 +240,6 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                                 onLoad={onImgLoad}
                                 className={photoStyles}
                                 alt={`Title: ${photo.title}`}
-                                onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
                             ></img>
 
                             :
@@ -253,10 +254,8 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                         }
                     </div>
 
+
                     {/* Photo information */}
-                    {/* <div
-                        className={styles.dimensions}
-                    > */}
                     <div
                         id='information'
                         className={`${visibility} ${information}`}
@@ -293,7 +292,6 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                             {photo.description}
                         </Typography>
                     </div>
-                    {/* </div> */}
                 </Box>
 
                 {/* FORWARD CYCLE BUTTON */}
