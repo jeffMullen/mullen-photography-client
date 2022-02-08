@@ -29,10 +29,13 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
     const [isShown, setIsShown] = useState(false);
 
-    //PHOTO ORIENTATION
+    // PHOTO ORIENTATION
     const [photoOrientation, setPhotoOrientation] = useState('');
 
     const [photoStyles, setPhotoStyles] = useState(``);
+
+    // PHOTO INFORMATION
+    const [information, setInformation] = useState('');
 
     let mobile;
 
@@ -48,7 +51,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     let visibility;
 
     if (orientation === 'portrait' || (orientation === 'landscape' && isShown)) {
-        visibility = styles.information;
+        visibility = information;
     }
     else {
         visibility = styles.hidden;
@@ -107,7 +110,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
 
     // Cycle through photos in the filteredImages array
-    // When forward and back arrows are clicked
+    // When forward and back arrows are clicked or image is swiped
     const changePhoto = (e, direction) => {
         if (direction === undefined && e._reactName === 'onTouchEnd') {
 
@@ -140,15 +143,18 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     // When currentIndex is changed - set the new photo
     useEffect(() => {
         setPhoto(filteredImages[currentIndex]);
-    }, [currentIndex, filteredImages])
+    }, [currentIndex, filteredImages]);
 
 
     //SET DIFFERENT IMAGE STYLES BASED ON PHOTO ORIENTATION
     useEffect(() => {
         if (photoOrientation === 'portrait') {
-            setPhotoStyles(`${styles.portrait}`)
+            setPhotoStyles(`${styles.portrait}`);
+            setInformation(`${styles.portraitInformation}`);
         } else {
-            setPhotoStyles(`${styles.landscape}`)
+            setPhotoStyles(`${styles.landscape}`);
+            setInformation(`${styles.landscapeInformation}`);
+
         }
     }, [photoOrientation]);
 
@@ -207,7 +213,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                     sx={{
                         position: 'relative',
                         height: '95%',
-                        width: {lg: '90%'},
+                        width: { lg: '90%' },
                         // bgcolor: 'rgba(0, 0, 0, 0.5)',
                         outline: 'none',
                         p: {
@@ -249,12 +255,11 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
 
                     {/* Photo information */}
                     {/* <div
-                    className={styles.dimensions}
-                >
+                        className={styles.dimensions}
+                    > */}
                     <div
                         id='information'
-                        className={visibility}
-                        // className={styles.information}
+                        className={`${visibility} ${information}`}
                         onMouseEnter={() => setIsShown(true)}
                     >
                         <Typography
@@ -275,7 +280,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                                 display: 'inline-block',
                             }}
                         >
-                            {`${photo.photographer}`}
+                            &#169; 2022, {`${photo.photographer}`}
                         </Typography>
                         <Typography
                             variant='p'
@@ -288,7 +293,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                             {photo.description}
                         </Typography>
                     </div>
-                </div> */}
+                    {/* </div> */}
                 </Box>
 
                 {/* FORWARD CYCLE BUTTON */}

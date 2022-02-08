@@ -30,7 +30,8 @@
 
 
 // PHOTO INFORMATION POPUP STYLES
-.information,
+.landscapeInformation,
+.portraitInformation,
 .hidden {
     position: absolute;
     border-radius: 3px;
@@ -46,7 +47,8 @@
     padding: 1.5rem 1.5rem 1rem 1.5rem;
 }
 
-.information {
+.landscapeInformation,
+.portraitInformation {
     opacity: 1;
     transition-duration: .3s;
     transition-property: opacity;
@@ -174,11 +176,16 @@
         right: .5%;
     }
 
-    .information {
+    .portraitInformation {
         top: 5%;
+        left: 50%;
+        width: 30%;
+    }
+    
+    .landscapeInformation {
+        top: 15%;
         left: 30%;
-        width: 50%;
-        // margin-top: 25px;
+        width: 30%;
     }
 }
 
@@ -188,7 +195,8 @@
 }
 
 @media screen and (orientation: portrait) and (min-width: 430px) {
-    .information {
+    .landscapeInformation,
+    .portraitInformation {
         top: -45%;
     }
 
@@ -198,7 +206,8 @@
 }
 
 @media screen and (orientation: portrait) and (min-width: 530px) {
-    .information {
+    .landscapeInformation,
+    .portraitInformation {
         top: -35%;
     }
 
@@ -232,4 +241,5 @@
     .imageWrapper {
         width: 90%;
     }
+
 }
