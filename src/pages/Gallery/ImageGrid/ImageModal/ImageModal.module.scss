@@ -138,12 +138,10 @@
     }
 
     .imageWrapper {
-        // max-height: 100%;
         max-width: 90%;
     }
 
     .portrait {
-        // max-height: 100%;
         max-width: 45%;
     }
 
@@ -160,13 +158,11 @@
 
     .back {
         left: 0;
-        // margin-right: auto;
         padding: .7rem .5rem .7rem .2rem;  
     }
 
     .forward {
         right: 0;
-        // margin-left: 1rem;
         padding: .7rem .2rem .7rem .5rem;
     }
 
@@ -241,5 +237,16 @@
     .imageWrapper {
         width: 90%;
     }
+}
 
+@media screen and (min-width: 1500px) and (orientation: landscape) {
+    .landscapeInformation,
+    .portraitInformation {
+        width: 20%;
+    }
+
+    .landscapeInformation {
+        top: 15%;
+        left: 35%;
+    }
 }
