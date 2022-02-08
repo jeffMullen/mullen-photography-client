@@ -175,7 +175,7 @@ function ImageGrid() {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    background: 'rgba(0, 0, 0, .25)'
+                    background: 'rgba(0, 0, 0, .7)'
                 }}
             >
                 <Box
