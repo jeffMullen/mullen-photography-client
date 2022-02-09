@@ -17,9 +17,12 @@ function CreativeCommons() {
                     <img
                         alt="Creative Commons License"
                         style={{ borderWidth: "0" }}
-                        src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" />
+                        src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"
+                        width="65" />
                 </a>
-                <Typography>This work is licensed under a</Typography>
+                <Typography
+                    variant="p"
+                >This work is licensed under a</Typography>
                 <a
                     target="_blank"
                     rel="noreferrer"
