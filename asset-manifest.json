@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mullen-photography-client/static/css/main.e222580c.chunk.css",
+    "main.css": "/mullen-photography-client/static/css/main.b60c9ea0.chunk.css",
     "main.js": "/mullen-photography-client/static/js/main.5231badb.chunk.js",
     "main.js.map": "/mullen-photography-client/static/js/main.5231badb.chunk.js.map",
     "runtime-main.js": "/mullen-photography-client/static/js/runtime-main.01a916c5.js",
@@ -8,7 +8,7 @@
     "static/js/2.e81363ea.chunk.js": "/mullen-photography-client/static/js/2.e81363ea.chunk.js",
     "static/js/2.e81363ea.chunk.js.map": "/mullen-photography-client/static/js/2.e81363ea.chunk.js.map",
     "index.html": "/mullen-photography-client/index.html",
-    "static/css/main.e222580c.chunk.css.map": "/mullen-photography-client/static/css/main.e222580c.chunk.css.map",
+    "static/css/main.b60c9ea0.chunk.css.map": "/mullen-photography-client/static/css/main.b60c9ea0.chunk.css.map",
     "static/js/2.e81363ea.chunk.js.LICENSE.txt": "/mullen-photography-client/static/js/2.e81363ea.chunk.js.LICENSE.txt",
     "static/media/anenome.e18a2617.jpeg": "/mullen-photography-client/static/media/anenome.e18a2617.jpeg",
     "static/media/barnacles.ed26363a.jpeg": "/mullen-photography-client/static/media/barnacles.ed26363a.jpeg",
@@ -57,7 +57,7 @@
   "entrypoints": [
     "static/js/runtime-main.01a916c5.js",
     "static/js/2.e81363ea.chunk.js",
-    "static/css/main.e222580c.chunk.css",
+    "static/css/main.b60c9ea0.chunk.css",
     "static/js/main.5231badb.chunk.js"
   ]
 }
