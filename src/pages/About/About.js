@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './About.module.scss';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 import Bio from './Bio/Bio';
 import SelfPortrait from './SelfPortrait/SelfPortrait';
+import CreativeCommons from '../../components/CreativeCommons/CreativeCommons';
 
 function About() {
 
@@ -44,7 +44,9 @@ function About() {
                 >
                     <Bio />             {/* BIO OF PHOTOGRAPHER */}
                     <SelfPortrait />    {/* IMAGE OF PHOTOGRAPHER */}
+                    <CreativeCommons /> {/* Creative Commons License */}
                 </Container>
+
             </Box>
         </>
     )

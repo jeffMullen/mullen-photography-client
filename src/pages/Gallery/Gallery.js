@@ -2,12 +2,11 @@ import React from 'react';
 
 import Categories from './Categories/Categories';
 import ImageGrid from './ImageGrid/ImageGrid';
+import CreativeCommons from '../../components/CreativeCommons/CreativeCommons';
 
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-
-import styles from './Gallery.module.scss';
 
 function Gallery() {
 
@@ -55,6 +54,7 @@ function Gallery() {
             <Box
                 sx={{height: '9rem',}}
             ></Box>
+            <CreativeCommons />
         </>
     )
 };

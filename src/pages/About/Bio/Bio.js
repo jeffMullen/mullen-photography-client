@@ -24,7 +24,7 @@ function Bio() {
                     Hi. I'm Jeff.
                 </Typography>
                 <Typography>
-                    Magna et ullamco deserunt pariatur laboris non tempor adipisicing non adipisicing elit.Voluptate tempor non mollit laboris et sunt est dolore.Do aute tempor sunt deserunt enim laboris nisi ad culpa et ullamco aute.Nulla proident tempor exercitation consectetur reprehenderit exercitation ullamco cillum minim sint nisi commodo aliquip.
+                    I am an amateur photographer.  I take most of my shots when travelling and experiencing intriguing natural wonders.  This gallery is a place to view some of those experiences from years past.
                 </Typography>
             </Container>
         </>

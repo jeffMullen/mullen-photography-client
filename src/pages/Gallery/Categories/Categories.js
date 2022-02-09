@@ -11,7 +11,6 @@ function Categories() {
     const [state, dispatch] = useStoreContext();
 
     const { currentCategory } = state;
-    console.log('currentCategory', currentCategory)
 
     // Set the photo category filter
     const setCategoryFilter = (e) => {
@@ -37,7 +36,7 @@ function Categories() {
                     }
                 }}
             >
-                {['All', 'Landscape', 'Urban', 'Abstract'].map(category =>
+                {['All', 'Nature', 'Urban', 'Abstract'].map(category =>
                     category === currentCategory ?
 
                         // The Current Category gets the underline style to denote the current filter

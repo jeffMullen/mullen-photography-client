@@ -45,25 +45,25 @@ const imageData = [
         img: berryPortrait,
         photographer: 'Jeff Mullen',
         title: 'Berries',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: sunset,
         photographer: 'Jeff Mullen',
         title: 'Sunset',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: cactus,
         photographer: 'Jeff Mullen',
         title: 'Cactus',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: iris,
         photographer: 'Jeff Mullen',
         title: 'Iris',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: camera,
@@ -81,13 +81,13 @@ const imageData = [
         img: groundLife,
         photographer: 'Jeff Mullen',
         title: 'Life From Below',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: mtSaintHelens,
         photographer: 'Jeff Mullen',
         title: 'Mt. Saint Helens',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: problematic,
@@ -99,7 +99,7 @@ const imageData = [
         img: anenome,
         photographer: 'Jeff Mullen',
         title: 'Sea Anenome',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: ducks,
@@ -111,7 +111,7 @@ const imageData = [
         img: dirtMushroom,
         photographer: 'Jeff Mullen',
         title: 'Mushroom',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: lenseLight,
@@ -147,67 +147,67 @@ const imageData = [
         img: threeWatchers,
         photographer: 'Jeff Mullen',
         title: 'Three Watchers',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: oasis,
         photographer: 'Jeff Mullen',
         title: 'Oasis',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: greenAndPurple,
         photographer: 'Jeff Mullen',
         title: 'Green and Purple',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: magnolia,
         photographer: 'Jeff Mullen',
         title: 'Magnolia',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: trillium,
         photographer: 'Jeff Mullen',
         title: 'Trillium',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: fairyHome,
         photographer: 'Jeff Mullen',
         title: 'Fairy Home',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: rose,
         photographer: 'Jeff Mullen',
         title: 'Rose',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: hurricaneRidge,
         photographer: 'Jeff Mullen',
         title: 'Hurricane Ridge',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: barnacles,
         photographer: 'Jeff Mullen',
         title: 'Barnacles',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: seeds,
         photographer: 'Jeff Mullen',
         title: 'Seeds',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: paintedHills,
         photographer: 'Jeff Mullen',
         title: 'The Painted Hills',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: unchained,
@@ -219,55 +219,55 @@ const imageData = [
         img: opalCreek,
         photographer: 'Jeff Mullen',
         title: 'Opal Creek',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: blue,
         photographer: 'Jeff Mullen',
         title: 'Blue',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: illinoisRiver,
         photographer: 'Jeff Mullen',
         title: 'Illinois River',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: mushroomLayers,
         photographer: 'Jeff Mullen',
         title: 'Mushroom Layers',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: illuminatedLeaves,
         photographer: 'Jeff Mullen',
         title: 'Illuminated Leaves',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: waningLight,
         photographer: 'Jeff Mullen',
         title: 'Waning Light',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: fire,
         photographer: 'Jeff Mullen',
         title: 'Fire',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: moss,
         photographer: 'Jeff Mullen',
         title: 'Moss',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: catNap,
         photographer: 'Jeff Mullen',
         title: 'Cat Nap',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: inAllHerGlory,
@@ -279,13 +279,13 @@ const imageData = [
         img: timeless,
         photographer: 'Jeff Mullen',
         title: 'Timeless',
-        category: 'Landscape'
+        category: 'Nature'
     },
     {
         img: sedona,
         photographer: 'Jeff Mullen',
         title: 'Sedona',
-        category: 'Landscape'
+        category: 'Nature'
     },
 ];
 
