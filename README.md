@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Mullen Photography
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+  * [Description](#description)
+  * [Technologies](#technologies)
 
-## Available Scripts
+## License 
+  All media is covered by the Creative Commons License
 
-In the project directory, you can run:
+## Technologies
+* React
+* MUI
+* SASS(SCSS)
+* JavaScript
+* Redux Principles ( Actions, Reducers, Store Provider )
 
-### `npm start`
+## Description
+  This is a React frontend application showcasing my work, both photography and web development.  Both the design of the site and the photography itself show attention to detail and clean visual composition.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- The image modal was created using React and JavaScript
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Much of the other components are instances of MUI components at the base level.
 
-### `npm test`
+    - Additional stylings added using the 'sx' prop that MUI uses for styling their components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    - Elements created with traditional HTML are styled using SCSS modules.
 
-### `npm run build`
+- Typography and Palette adjustements made to the default theme of MUI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Gallery Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="./readmeImages/desktop-view-alt.png" alt="Gallery Page">
 
-### `npm run eject`
+  
+### Image Modal
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="./readmeImages/modal-view.png" alt="Modal View" width="650">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Mobile View
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="./readmeImages/mobile-portrait.png" alt="Mobile Modal View" width="250">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Questions
+  
+  [github.com/jeffMullen](https://github.com/jeffMullen)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  If you have additional questions, feel free to reach me at jeffmullendev@gmail.com
