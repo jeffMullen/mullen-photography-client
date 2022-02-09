@@ -49,7 +49,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     // Show information if in mobile portrait mode, if tapped on mobile landscape mode, and if hovered on desktop
     let visibility;
 
-    if (orientation === 'portrait' || (orientation === 'landscape' && isShown)) {
+    if (isShown) {
         visibility = information;
     }
     else {
@@ -131,7 +131,7 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
             currentIndex < filteredImages.length - 1 ? setCurrentIndex(currentIndex + 1) : setSwipe({ touchStart: null, touchEnd: null, moved: false });
         } else {
             currentIndex > 0 ? setCurrentIndex(currentIndex - 1) : setSwipe({ touchStart: null, touchEnd: null, moved: false });
-        }
+        };
 
         setSwipe({ touchStart: null, touchEnd: null, moved: false });
     };
@@ -158,12 +158,11 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
     const onImgLoad = ({ target: img }) => {
         const { offsetHeight, offsetWidth } = img;
         if (offsetHeight > offsetWidth) {
-            console.log('portrait')
             setPhotoOrientation('portrait');
         }
         else {
             setPhotoOrientation('landscape');
-        }
+        };
     };
 
     return (
@@ -179,7 +178,9 @@ function ImageModal({ filteredImages, orientation, handleClose, vw }) {
                 </button>
                 <button
                     className={styles.infoButton}
-                    onClick={() => !isShown ? setIsShown(true) : setIsShown(false)}
+                    onClick={() => {
+                        console.log('INFORMATION BUTTON')
+                        !isShown ? setIsShown(true) : setIsShown(false)}}
                 >
                     <InfoIcon />
                 </button>

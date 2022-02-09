@@ -15,7 +15,7 @@
     margin-right: 1rem;
     z-index: 50;
     color: white;
-    padding: .5rem .5rem .3rem .5rem;
+    padding: .3rem .3rem .1rem .3rem;
     outline: none;
     border: none;
     border-radius: 3px;
@@ -98,18 +98,21 @@
 .forward {
     position: absolute;
     z-index: 1001;
-    // top: 150%;
-    
 }
 
 .back {
     justify-self: flex-end;
-
+    
     left: 30%;
 }
 
 .forward {
     right: 30%;
+}
+
+// DISABLE CYCLE BUTTON
+.disable {
+    color: rgba(0, 0, 0, 0);
 }
 
 @media screen and (orientation: portrait) {
@@ -120,7 +123,7 @@
     }
 
     .infoButton {
-        top: -12%;
+        top: -15%;
         right: 1%;
     }
 
@@ -132,11 +135,17 @@
     // PHOTO ORIENTATION - LANDSCAPE
     .landscape {
         width: 100%;
+        transform: translateY(-20%);
     }
 
     .forward,
     .back {
         top: 90%;
+    }
+    
+    .landscapeInformation,
+    .portraitInformation {
+        top: -7%;
     }
 }
 
@@ -201,10 +210,6 @@
     }
 }
 
-// DISABLE CYCLE BUTTON
-.disable {
-    color: rgba(0, 0, 0, 0);
-}
 
 @media screen and (orientation: portrait) and (min-width: 430px) {
     .landscapeInformation,
@@ -237,12 +242,6 @@
 }
 
 @media screen and (min-width: 1280px) and (orientation: landscape) {
-    // .modalWrapper {
-    //     width: 100%;
-    //     flex-direction: row;
-    //     justify-content: space-between;
-    // }
-
     .back,
     .forward {
         display: inline-block;
@@ -262,6 +261,10 @@
     
     .infoButton {
         top: 10%;
+    }
+
+    .landscapeInformation {
+        left: 30%;
     }
 }
 
